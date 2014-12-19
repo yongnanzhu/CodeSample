@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: relative;
+        width: 960px;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .bar {
+        fill: steelblue;
+        fill-opacity: .9;
+    }
+
+    .x.axis path {
+        display: none;
+    }
+
+    label {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+</style>
+<label><input type="checkbox"> Sort values</label>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+            width = 1960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+
+    var x = d3.scale.linear()
+            .range([0, width]);
+    var y = d3.scale.linear()
+            .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.text("./gene_Item.txt", function(error, geneItems) {
+        var datas = geneItems.split("\r\n");
+        var geneItemData={};
+        geneItemData.genes = [];
+        geneItemData.Items = [];
+        for(var i=0; i<datas.length; ++i)
+        {
+            if(datas[i]=="")
+                continue;
+            var pairs = datas[i].split("\t");
+            geneItemData.genes.push(pairs[0]);
+            geneItemData.Items.push(pairs[1]);
+        }
+        currentData = partData(geneItemData).items;        //0 genes   1 items
+        var max = d3.max(currentData, function(d){
+             return  d.sum;
+        });
+
+        x.domain([0, currentData.length]);
+        y.domain([0, max]);
+
+        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+        svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Frequency");
+
+
+        svg.selectAll(".bar")
+                .data(currentData)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", function(d,i) {
+                    return x(i);
+                })
+                .attr("width", 2)
+                .attr("y", function(d) { return y(d.sum); })
+                .attr("height", function(d) { return height - y(d.sum); });
+
+
+    });
+    function partData(data){
+        var sData={};     //0 genes 1 items
+
+        var genes=[];
+        var items=[];
+
+        sData.keys=[
+            d3.set(data.genes.map(function(d){
+                if (d !== "")
+                    return d;
+                return d;})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);}),
+            d3.set(data.Items.map(function(d){
+                if (d !== "")
+                    return d;
+                return d;})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);})
+        ];
+        //initialize the relationship
+        sData.data = [
+            sData.keys[0].map(
+                    function(d){
+                        return sData.keys[1].map( function(v){ return 0; });
+                    }),
+            sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); })
+        ];
+
+
+        for(var i=0; i<data.genes.length; ++i)
+        {
+            var gene =data.genes[i];
+            var item =data.Items[i];
+            sData.data[0][sData.keys[0].indexOf(gene)][sData.keys[1].indexOf(item)]=1;      // The relationship from left to right
+            sData.data[1][sData.keys[1].indexOf(item)][sData.keys[0].indexOf(gene)]=1;     // The relationship from right to left
+        }
+
+        for(var i=0; i<sData.keys[1].length; ++i)
+        {
+            var obj = {};
+            obj.data = sData.data[1][i];
+            obj.genes = [];
+            for(var j=0; j<obj.data.length; ++j)
+            {
+                if(obj.data[j]!==0)
+                    obj.genes.push(sData.keys[0][j]);
+            }
+            obj.keys = sData.keys[1][i];
+            obj.id = "idItem"+i;
+            obj.sum = d3.sum(sData.data[1][i]);
+            items.push(obj);
+        }
+        for(var i=0; i<sData.keys[0].length; ++i)
+        {
+            var _obj = {};
+            _obj.data = sData.data[0][i];
+            _obj.items = [];
+            for(var j=0; j<_obj.data.length; ++j)
+            {
+                if(_obj.data[j]!==0)
+                    _obj.items.push(sData.keys[1][j]);
+            }
+            _obj.keys = sData.keys[0][i];
+            _obj.id = "idGene"+i;
+            _obj.sum = d3.sum(sData.data[0][i]);
+            genes.push(_obj);
+        }
+        return {items:items, genes:genes};
+    }
+</script>

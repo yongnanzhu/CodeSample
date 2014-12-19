@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style type="text/css">
+    div#container {
+        height: 500px;
+        width: 300px;
+        border:2px solid #000;
+        overflow: scroll;
+    }
+    table {
+        border-collapse: collapse;
+        font: 10px sans-serif;
+    }
+
+    th {
+        background-color:#eee;
+        color:#666666;
+        font-weight: bold;
+        cursor: default;
+        /*text-align: center;*/
+        font: 16px sans-serif;
+        /*min-width: 43px;*/
+        cursor: s-resize;
+    }
+
+    tbody tr:first-child td {
+        padding-top: 2px;
+    }
+
+    tbody td {
+        padding: 0;
+        border: solid 1px #000;
+        font: 14px sans-serif;
+        text-align: center;
+    }
+
+    tbody rect {
+        fill: steelblue;
+    }
+
+    tbody td:hover rect {
+        fill: brown;
+    }
+    .Bcell {
+        text-align: left;
+        left:0;
+        top:15
+    }
+    .highlight{
+        background-color: yellow;
+    }
+</style>
+<body>
+<button id="delete">Delete</button>
+ <div id="d3table">
+ </div>
+<script src="./d3.min.js"></script>
+<script>
+    var currentData;
+    var tooltip;
+    var rowLength = 3;
+    d3.text("./gene_Item.txt", function (geneItems) {
+
+        var datas = geneItems.split("\r\n");
+        var geneItemData={};
+        geneItemData.genes = [];
+        geneItemData.Items = [];
+        for(var i=0; i<datas.length; ++i)
+        {
+            if(datas[i]=="")
+                continue;
+            var pairs = datas[i].split("\t");
+            geneItemData.genes.push(pairs[0]);
+            geneItemData.Items.push(pairs[1]);
+        }
+        currentData = partData(geneItemData);        //0 genes   1 items
+        tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("fill", "#333")
+                .style("font-size", "12px")
+                .style("background", "#eee")
+                .style("box-shadow", "0 0 5px #999999")
+                .style("position", "absolute")
+                .style("z-index", "10");
+        refreshTable(currentData);
+    });
+    function refreshTable(Data) {
+
+        d3.select("#delete").on("click", function(d,i) {
+            d3.selectAll('.checkBox')[0].forEach(function(d, i) {
+                if(d.checked)
+                {
+                    var currentdata = d3.select("#"+d.id).datum();
+                    var index = Data.indexOf(currentdata);
+                    if(index > -1)
+                    {
+                        Data.splice(index,1);
+                    }
+                }
+            });
+            refreshTable(Data);
+        });
+
+        var margin = {top: 20, right: 10, bottom: 30, left: 10},
+                width = 800 - margin.left - margin.right,
+                height = 600 - margin.top - margin.bottom;
+        if(d3.select('#d3table').select('table'))
+        {
+            d3.select('#d3table').select('table').remove();
+        }
+        var table = d3.select('#d3table').append("table")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom);
+
+        table.append("tbody");
+
+        var matrix = [];
+        var currentData = clone(Data);
+        while(currentData.length) {
+            matrix.push(currentData.splice(0,rowLength));
+        }
+
+        function clone(obj) {
+            if (null == obj || "object" != typeof obj) return obj;
+            var copy = obj.constructor();
+            for (var attr in obj) {
+                if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+            }
+            return copy;
+        }
+        // fill the table
+        // create rows
+        var tr = d3.select("tbody")
+                .selectAll("tr")
+                .data(matrix);
+        tr.enter().append("tr");
+
+        // create cells
+        var td = tr.selectAll("td")
+                .data(function (d) {
+                    return d;
+                }) .attr("width",80);
+
+        var cellTd = td.enter().append("td");
+
+        cellTd.attr("id", function(d,i){
+            return "cellTd"+d.id;
+        }).on("click", function(d,i) {
+            if(!d3.select("#"+d3.select(this).datum().id).node().checked )
+            {
+                d3.select(this).attr("class","highlight");
+                d3.select("#"+d3.select(this).datum().id).property('checked', true);
+            }
+            else
+            {
+                d3.select(this).attr("class","normal");
+                d3.select("#"+d3.select(this).datum().id).property('checked', false);
+            }
+
+
+        });
+
+        function format_name(d) {
+            var name = '<b>';
+            name+=d.genes.join("</b><br/><b>");
+            name+='</b><br/>';
+            return  name;
+        }
+        {
+            var maxCount = d3.max(matrix, function(array) {
+                return d3.max(array, function(d,i){
+                    return d.sum;
+                });
+            });
+            if(maxCount>0)
+            {
+                cellTd.append("svg").attr("left", 0)
+                        .attr("class", "cellCount")
+                        .attr("height", 10)
+                        .append("rect")
+                        .attr("height", 10)
+                        .attr("width",
+                        function(d) {
+                            if(d.sum!==undefined)
+                                return d.sum /maxCount * 80;
+                            else
+                                return 0;
+                        });
+                cellTd.on("mouseover", function(d,i) {
+                    tooltip.html(function() {
+                        var name = format_name(d);
+                        return name;
+                    });
+                    return tooltip.transition()
+                            .duration(50)
+                            .style("opacity", 0.9);
+
+                })
+                        .on("mousemove", function(d) {
+                            return tooltip
+                                    .style("top", (d3.event.pageY-10)+"px")
+                                    .style("left", (d3.event.pageX+10)+"px");
+                        })
+                        .on("mouseout", function(){
+                            tooltip.style("opacity", 0);
+                        });
+            }
+        }
+        var cellDiv = cellTd.append('div');
+        cellDiv.append('input').attr("class","checkBox")
+                .attr("id", function(d,i){
+                    return d.id;
+                })
+                .attr('type','checkbox')
+                .on("click", function(d,i) {
+                    if(!this.checked )
+                    {
+                        d3.select("cellTd"+ d.id).attr("class","highlight");
+                        this.checked=true;
+                    }
+                    else
+                    {
+                        d3.select("cellTd"+ d.id).attr("class","normal");
+                        this.checked=false;
+                    }
+
+
+                });
+        cellDiv.attr("class","Bcell")
+                .append("span")
+                .text(function(d) {return d.keys;});
+
+    }
+
+    function partData(data){
+        var sData={};     //0 genes 1 items
+
+        var genes=[];
+        var items=[];
+
+        sData.keys=[
+            d3.set(data.genes.map(function(d){
+                if (d !== "")
+                    return d;
+                return d;})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);}),
+            d3.set(data.Items.map(function(d){
+                if (d !== "")
+                    return d;
+                return d;})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);})
+        ];
+        //initialize the relationship
+        sData.data = [
+            sData.keys[0].map(
+                    function(d){
+                        return sData.keys[1].map( function(v){ return 0; });
+                    }),
+            sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); })
+        ];
+
+
+        for(var i=0; i<data.genes.length; ++i)
+        {
+            var gene =data.genes[i];
+            var item =data.Items[i];
+            sData.data[0][sData.keys[0].indexOf(gene)][sData.keys[1].indexOf(item)]=1;      // The relationship from left to right
+            sData.data[1][sData.keys[1].indexOf(item)][sData.keys[0].indexOf(gene)]=1;     // The relationship from right to left
+        }
+
+        for(var i=0; i<sData.keys[1].length; ++i)
+        {
+            var obj = {};
+            obj.data = sData.data[1][i];
+            obj.genes = [];
+            for(var j=0; j<obj.data.length; ++j)
+            {
+                if(obj.data[j]!==0)
+                    obj.genes.push(sData.keys[0][j]);
+            }
+            obj.keys = sData.keys[1][i];
+            obj.id = "idItem"+i;
+            obj.sum = d3.sum(sData.data[1][i]);
+            items.push(obj);
+        }
+        return items;
+    }
+
+</script>
