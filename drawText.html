@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        svg {
+            font: 12px sans-serif;
+        }
+
+        text {
+            pointer-events: none;
+        }
+
+        .inner_node rect {
+            pointer-events: all;
+        }
+
+        .inner_node rect.highlight {
+            stroke: #315B7E;
+            stroke-width: 2px;
+        }
+
+        .outer_node circle {
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 1.5px;
+            pointer-events: all;
+        }
+
+        .outer_node circle.highlight {
+            stroke: #315B7E;
+            stroke-width: 2px;
+        }
+
+        .link {
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+    var data = [
+        "Apoptosis",
+        "Binding and Uptake of Ligands by Scavenger Receptors",
+        "Cell Cycle",
+        "Cell-Cell communication",
+        "Cellular responses to stress",
+        "Circadian Clock",
+        "Developmental Biology",
+        "Disease",
+        "DNA Repair",
+        "DNA Replication",
+        "Extracellular matrix organization",
+        "Gene Expression",
+        "Hemostasis",
+        "Immune System",
+        "Meiosis",
+        "Membrane Trafficking",
+        "Metabolism",
+        "Metabolism of proteins",
+        "Muscle contraction",
+        "Neuronal System",
+        "Reproduction",
+        "Signal Transduction",
+        "SUMOylation",
+        "Transmembrane transport of small molecules"
+    ];
+    var rect_height = 7;
+    var rect_width = 20;
+    var inner_y = d3.scale.linear()
+            .domain([0, data.length])
+            .range([-(data.length * rect_height) / 2, (data.length * rect_height) / 2]);
+    inners = [];
+    for(var i=0; i<data.length; ++i)
+    {
+        var object = {};
+        object.id = i;
+        object.name = data[i];
+        object.x = -(rect_width / 2);
+        object.y = inner_y(i);
+        inners.push(object);
+    }
+    var svg = d3.select("body").append("svg")
+            .attr("width", 600)
+            .attr("height", 600)
+            .append("g")
+            .attr("transform", "translate(" + 600 / 2 + "," + 600 / 2 + ")");
+    var inode = svg.append('g').selectAll(".inner_node");
+
+    var inodeRect  = inode.data(inners).enter().append("g")
+            .attr("class", "inner_node");
+    var inodeText  = inode.data(inners).enter().append("g")
+            .attr("class", "inner_node");
+
+    inodeText = inodeText.append("text")
+            .attr('id', function (d) {
+                return d.id + '-txt';
+            })
+            .attr('text-anchor', 'middle')
+            .attr("transform", function(d){
+                return "translate(" + ( rect_width / 2+ d.x ) + ", " + (rect_height * .75+ d.y) + ")";
+            })
+            .style("font-size",rect_height)
+            .text(function (d) {
+                return d.name;
+            })
+            .each(function(d) {
+                d.bx = this.getBBox().x;
+                d.by = this.getBBox().y;
+                d.bwidth = this.getBBox().width;
+                d.bheight = this.getBBox().height;
+            });
+
+    inodeRect = inodeRect.append('rect')
+            .attr('x', function(d) { return d.bx; })
+            .attr('y', function(d) { return d.by; })
+            .attr('width', function(d) { return d.bwidth; })
+            .attr('height', function(d) { return d.bheight; })
+            .attr('text-anchor', 'middle')
+            .attr("transform", function(d){
+                return "translate(" + ( rect_width / 2+ d.x ) + ", " + (rect_height * .75+ d.y) + ")";
+            })
+            .attr('id', function (d) {
+                return d.id;
+            })
+            .attr('fill', function (d) {
+                return "#e5f5f9";
+            });
+</script>
+</body>
+</html>

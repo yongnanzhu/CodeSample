@@ -1,0 +1,240 @@
+{
+    "reactions": {
+        "name": "reaction",
+        "children": [
+            {
+                "name": "plasma membrane",
+                "children": [
+                    {
+                        "name": "FasL:Fas binds FADD",
+                        "id": 3,
+                        "type": "Association"
+                    },
+                    {
+                        "name": "FASL:FAS Receptor Trimer:FADD complex binds pro-Caspase-8",
+                        "id": 4,
+                        "type": "Association"
+                    },
+                    {
+                        "name": "FASL:FAS Receptor Trimer:FADD complex binds pro-Caspase-10",
+                        "id": 5,
+                        "type": "Association"
+                    },
+                    {
+                        "name": "Trimerization of the FASL:FAS receptor complex",
+                        "id": 2,
+                        "type": "Transitions"
+                    }
+                ]
+            },
+            {
+                "name": "extracellular region",
+                "children": [
+                    {
+                        "name": "FASL binds FAS Receptor",
+                        "id": 1,
+                        "type": "Association"
+                    }
+                ]
+            }
+        ]
+    },
+    "biomolecules": {
+        "name": "biomolecules",
+        "children": [
+            {
+                "name": "Complex",
+                "children": [
+                    {
+                        "name": "FASL:FAS Receptor monomer",
+                        "id": 1,
+                        "reactomeDbId": "76564"
+                    },
+                    {
+                        "name": "FASL:FAS Receptor Trimer",
+                        "id": 2,
+                        "reactomeDbId": "76564"
+                    },
+                    {
+                        "name": "FASL:FAS Receptor Trimer:FADD",
+                        "id": 3,
+                        "reactomeDbId": "76564"
+                    },
+                    {
+                        "name": "FASL:FAS Receptor Trimer:FADD:pro-Caspase-10",
+                        "id": 5,
+                        "reactomeDbId": "76564"
+                    }
+                ]
+            },
+            {
+                "name": "Protein",
+                "children": [
+                    {
+                        "name": "FAS",
+                        "id": 2,
+                        "reactomeDbId": "66248"
+                    },
+                    {
+                        "name": "FLICE2",
+                        "id": 6,
+                        "reactomeDbId": "57035"
+                    },
+                    {
+                        "name": "FASL",
+                        "id": 1,
+                        "reactomeDbId": "66212"
+                    },
+                    {
+                        "name": "FADD",
+                        "id": 3,
+                        "reactomeDbId": "54639"
+                    },
+                    {
+                        "name": "MACH",
+                        "id": 4,
+                        "reactomeDbId": "57031"
+                    },
+                    {
+                        "name": "E6",
+                        "id": 5,
+                        "reactomeDbId": "2671794"
+                    }
+                ]
+            }
+        ]
+    },
+    "links": [
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 1,
+                "type": "P"
+            },
+            "end": {
+                "id": 1,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 2,
+                "type": "P"
+            },
+            "end": {
+                "id": 1,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 1,
+                "type": "C"
+            },
+            "end": {
+                "id": 2,
+                "type": "T"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 2,
+                "type": "T"
+            },
+            "end": {
+                "id": 2,
+                "type": "C"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 2,
+                "type": "C"
+            },
+            "end": {
+                "id": 3,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 3,
+                "type": "P"
+            },
+            "end": {
+                "id": 3,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 3,
+                "type": "C"
+            },
+            "end": {
+                "id": 4,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 4,
+                "type": "P"
+            },
+            "end": {
+                "id": 4,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 6,
+                "type": "P"
+            },
+            "end": {
+                "id": 5,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 3,
+                "type": "C"
+            },
+            "end": {
+                "id": 5,
+                "type": "B"
+            }
+        },
+        {
+            "type": "Arrow",
+            "begin": {
+                "id": 5,
+                "type": "B"
+            },
+            "end": {
+                "id": 5,
+                "type": "C"
+            }
+        },
+        {
+            "type": "Inhibitions",
+            "begin": {
+                "id": 5,
+                "type": "P"
+            },
+            "end": {
+                "id": 4,
+                "type": "B"
+            }
+        }
+    ]}

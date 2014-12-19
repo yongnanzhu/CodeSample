@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    path {
+        stroke: #fff;
+        fill-rule: evenodd;
+    }
+    .node {
+        font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        fill: #bbb;
+    }
+
+    .node:hover {
+        fill: #000;
+    }
+
+    .titleLink {
+        stroke: steelblue;
+        stroke-opacity: .4;
+        fill: none;
+        pointer-events: none;
+    }
+
+</style>
+<body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+    var width = 730,
+            height = 730,
+            radius = Math.min(width, height) / 2;
+
+    var x = d3.scale.linear()
+            .range([0, 2 * Math.PI]);
+
+    var y = d3.scale.sqrt()
+            .range([0, radius]);
+
+    var color = d3.scale.category20c();
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+    var partition = d3.layout.partition()
+            .value(function(d) { return d.size; });
+
+    var arc = d3.svg.arc()
+            .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+            .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+            .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+            .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+    var tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .style("position", "absolute")
+            .style("z-index", "10000")
+            .style("opacity", 0);
+
+    function format_number(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function format_name(d) {
+        var name = d.name;
+        return  '<b>' + name + '</b>';
+    }
+
+    var nodeData ;
+    //edge ----------------------------------------------------------------------------
+    var bundle = d3.layout.bundle();
+    var line = d3.svg.line.radial()
+            .interpolate("bundle")
+            .tension(.85)
+            .radius(function(d) {
+                return d.y;
+            })
+            .angle(function(d) {
+//                return d.x;
+                return d.x/ Math.PI * 180;
+            });
+    var diagonal = d3.svg.diagonal()
+            .projection(function(d) { return [d.x, d.y]; });
+    //------------------------------------------------------------------------------------------
+
+    d3.json("pathwayHierarchy.json", function(error, root) {
+        nodeData = partition.nodes(root);
+        d3.json("crosstalkLinksLevel1.json", function(error, classes) {
+            var g = svg.selectAll("g")
+                    .data(nodeData)
+                    .enter().append("g");
+
+            var bundleGroup = svg.append("g");
+            var link = bundleGroup.append("g").selectAll(".link");
+            var node = bundleGroup.append("g").selectAll(".node");
+
+            var path = g.append("path")
+                    .attr("id", function(d,i){return "group" + i;})
+                    .attr("d", arc)
+                    .style("fill", function(d,i) {
+                        if(i==0)
+                            return "#fff";
+                        return color((d.children ? d : d.parent).name); } )
+                    .style("cursor", "pointer")
+                    .on("mouseover", function(d,i) {
+                        if(i==0)
+                            return;
+                        tooltip.html(function() {
+                            return format_name(d);
+                        });
+                        return tooltip.transition()
+                                .duration(50)
+                                .style("opacity", 0.9);
+                    })
+                    .on("mousemove", function(d) {
+                        return tooltip
+                                .style("top", (d3.event.pageY-10)+"px")
+                                .style("left", (d3.event.pageX+10)+"px");
+
+                    })
+                    .on("mouseout", function(){
+                        d3.select(this).attr("opacity",1.0);
+                        tooltip.style("opacity", 0);
+                    });
+
+            processTextLinks(nodeData);
+
+            function processTextLinks(nodes)
+            {
+                var importLinks = [];
+                var data = [];
+                for(var i=0; i<nodes.length; ++i)
+                {
+                    if(nodes[i].depth ==1)
+                    {
+                        data.push(nodes[i]);
+                    }
+                }
+                var rect_height = 9;
+                var rect_width = 20;
+                var inner_y = d3.scale.linear()
+                        .domain([0, data.length])
+                        .range([-(data.length * rect_height) / 2, (data.length * rect_height) / 2]);
+                var inners = [];
+                for(var i=0; i<data.length; ++i)
+                {
+                    var object = {};
+                    object.id = i;
+                    object.name = data[i].name;
+                    object.x = -(rect_width / 2);
+                    object.y = inner_y(i);
+                    object.linkTo = data[i];
+                    inners.push(object);
+                }
+
+                for(var i=0; i<inners.length; ++i)
+                {
+                    var importObj = {};
+                    importObj.id = inners[i].id;
+                    importObj.target = inners[i];
+                    importObj.source = inners[i].linkTo;
+                    importLinks.push(importObj);
+                }
+
+                var diagonal = d3.svg.diagonal()
+                        .source(function (d) {
+                            var innerRadius = Math.max(0, y(d.source.y));
+                            var arcCenter = x(d.source.x + d.source.dx/2.0);
+
+                            return {"x": innerRadius * Math.cos(Math.PI - arcCenter),      //radial space
+                                "y": innerRadius * Math.sin(Math.PI - arcCenter)};
+                        })
+                        .target(function (d) {                                           //normal space
+                            return {"x": d.target.y + rect_height / 2,
+                                "y": d.source.x ? d.target.x : d.target.x + rect_width};
+                        })
+                        .projection(function (d) {
+                            return [d.y, d.x];
+                        });
+
+                // links
+                var link = svg.append('g').attr('class', 'links').selectAll(".titleLink")
+                        .data(importLinks)
+                        .enter().append('path')
+                        .attr('class', 'titleLink')
+                        .attr('id', function (d) {
+                            return  'titleLink'+ d.id;
+                        })
+                        .attr("d", diagonal)
+                        .attr('stroke', function (d) {
+                            return "#00f";
+                        })
+                        .attr('stroke-width', "1px");
+
+                var inode = svg.append('g').selectAll(".inner_node");
+
+                var inodeRect  = inode.data(inners).enter().append("g")
+                        .attr("class", "inner_node");
+                var inodeText  = inode.data(inners).enter().append("g")
+                        .attr("class", "inner_node");
+
+                inodeText = inodeText.append("text")
+                        .attr('id', function (d) {
+                            return d.id + '-txt';
+                        })
+                        .attr('text-anchor', 'middle')
+                        .attr("transform", function(d){
+                            return "translate(" + ( rect_width / 2+ d.x ) + ", " + (rect_height * .75+ d.y) + ")";
+                        })
+                        .style("font-size",rect_height)
+                        .text(function (d) {
+                            return d.name;
+                        })
+                        .each(function(d) {
+                            d.bx = this.getBBox().x;
+                            d.by = this.getBBox().y;
+                            d.bwidth = this.getBBox().width;
+                            d.bheight = this.getBBox().height;
+                        })
+                        .on("mouseover", mouserOverText)
+                        .on("mouseout", mouseOutText);
+
+                inodeRect = inodeRect.append('rect')
+                        .attr('x', function(d) { return d.bx; })
+                        .attr('y', function(d) { return d.by; })
+                        .attr('width', function(d) { return d.bwidth; })
+                        .attr('height', function(d) { return d.bheight; })
+                        .attr('text-anchor', 'middle')
+                        .attr("transform", function(d){
+                            return "translate(" + ( rect_width / 2+ d.x ) + ", " + (rect_height * .75+ d.y) + ")";
+                        })
+                        .attr('id', function (d) {
+                            return d.id+ '-txt';
+                        })
+                        .attr('fill', function (d) {
+                            return "#e5f5f9";
+                        })
+                        .on("mouseover", mouserOverText)
+                        .on("mouseout", mouseOutText);
+                function mouserOverText(d){
+                    d3.select("#"+ 'titleLink'+d.id ).attr('stroke-width', '5px');
+                }
+                 function mouseOutText(d)
+                 {
+                     d3.select("#"+ 'titleLink'+d.id ).attr('stroke-width', '1px');
+                 }
+            }
+        });
+
+    });
+
+    d3.select(self.frameElement).style("height", height + "px");
+
+</script>

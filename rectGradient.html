@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rectangle Color Gradient</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+    <style type="text/css">
+        svg {
+            xborder:1px solid red;
+        }
+        .axis text {
+            font: 10px sans-serif;
+        }
+
+        .axis line,
+        .axis path {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+    </style>
+</head>
+<body>
+<div id='d3'></div>
+</body>
+<script type="text/javascript" >
+    var divisions = 20;
+
+    var scaleMargin = {top: 5, right: 5, bottom: 5, left: 5},
+            scaleWidth = 170 - scaleMargin.left - scaleMargin.right,
+            scaleHeight = 30 - scaleMargin.top - scaleMargin.bottom;
+
+    var newData = [];
+    var sectionWidth = Math.floor(scaleWidth / divisions);
+
+    for (var i=0; i < scaleWidth; i+= sectionWidth ) {
+        newData.push(i);
+    }
+
+    var colorScaleLin = d3.scale.linear()
+            .domain([0, newData.length-1])
+            .interpolate(d3.interpolateRgb)
+            .range([d3.rgb(243,247,213), d3.rgb(33,49,131)]);
+    var colorScalePow = d3.scale.pow().exponent(.6)
+            .domain([0, newData.length-1])
+            .interpolate(d3.interpolateRgb)
+            .range([d3.rgb(243,247,213), d3.rgb(33,49,131)]);
+
+    var colorScaleBar = d3.select("#d3")
+            .append("svg")
+            .attr("width", scaleWidth + scaleMargin.left + scaleMargin.right)
+            .attr("height", scaleHeight*4 + scaleMargin.top + scaleMargin.bottom );
+
+    var xScale = d3.scale.linear()
+            .domain([0, 0.021])
+            .range([0, scaleWidth]);
+
+    var xAxis = d3.svg.axis()
+            .scale(xScale);
+
+    colorScaleBar.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + (scaleHeight+3) + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .attr("y", 0)
+            .attr("x", 8)
+            .attr("dy", ".1em")
+            .attr("transform", "rotate(90)")
+            .style("text-anchor", "start");
+
+    colorScaleBar.selectAll('rect')
+            .data(newData)
+            .enter()
+            .append('rect')
+            .attr("x", function(d) { return d; })
+            .attr("y", 0)
+            .attr("height", scaleHeight)
+            .attr("width", sectionWidth)
+            .attr('fill', function(d, i) { return colorScaleLin(i)});
+</script>
+</html>

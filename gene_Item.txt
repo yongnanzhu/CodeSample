@@ -1,0 +1,1914 @@
+BMPR1A	downstream
+RHOA	downstream
+BMPR2	downstream
+SMURF1	downstream
+PAK3	downstream
+LIMK2	downstream
+SMAD2	downstream
+RAC2	downstream
+CDC42	downstream
+SMAD3	downstream
+GRB2	downstream
+ROCK1	downstream
+SOS2	downstream
+SMAD1	downstream
+RAC1	downstream
+SOS1	downstream
+LIMK1	downstream
+AKT1	downstream
+AKT3	downstream
+PAK2	downstream
+PAK1	downstream
+SMAD6	signaling pathway
+BMPR1A	signaling pathway
+RHOA	signaling pathway
+TGFBR1	signaling pathway
+BMPR2	signaling pathway
+SMURF1	signaling pathway
+PAK7	signaling pathway
+RAC3	signaling pathway
+SMAD2	signaling pathway
+SHC1	signaling pathway
+RAC2	signaling pathway
+CDC42	signaling pathway
+SMAD3	signaling pathway
+GRB2	signaling pathway
+ROCK1	signaling pathway
+SOS2	signaling pathway
+SMAD1	signaling pathway
+SOS1	signaling pathway
+RAC1	signaling pathway
+LIMK1	signaling pathway
+AKT1	signaling pathway
+SHC3	signaling pathway
+PAK1	signaling pathway
+BMPR1A	constitutively active
+RHOA	constitutively active
+RAC3	constitutively active
+PAK3	constitutively active
+RAC2	constitutively active
+CDC42	constitutively active
+ROCK1	constitutively active
+SMAD1	constitutively active
+RAC1	constitutively active
+LIMK1	constitutively active
+AKT1	constitutively active
+AKT3	constitutively active
+PAK2	constitutively active
+PAK1	constitutively active
+SMURF1	rho family
+RAC3	rho family
+LIMK2	rho family
+PAK3	rho family
+RAC2	rho family
+ROCK1	rho family
+SOS2	rho family
+RAC1	rho family
+LIMK1	rho family
+AKT1	rho family
+PAK1	rho family
+SMAD6	phosphoryl
+SMURF2	phosphoryl
+TGFBR1	phosphoryl
+RHOA	phosphoryl
+BMPR2	phosphoryl
+SMURF1	phosphoryl
+PAK7	phosphoryl
+LIMK2	phosphoryl
+PAK3	phosphoryl
+SMAD2	phosphoryl
+SHC1	phosphoryl
+CDC42	phosphoryl
+SMAD3	phosphoryl
+ROCK1	phosphoryl
+GRB2	phosphoryl
+SOS2	phosphoryl
+SMAD1	phosphoryl
+RAC1	phosphoryl
+SOS1	phosphoryl
+LIMK1	phosphoryl
+AKT3	phosphoryl
+AKT1	phosphoryl
+PAK2	phosphoryl
+SHC2	phosphoryl
+SHC3	phosphoryl
+PAK1	phosphoryl
+PAK6	phosphoryl
+SMAD6	serine/threonine kinases
+TGFBR2	serine/threonine kinases
+BMPR1A	serine/threonine kinases
+TGFBR1	serine/threonine kinases
+LIMK2	serine/threonine kinases
+SMAD2	serine/threonine kinases
+ROCK1	serine/threonine kinases
+SMAD1	serine/threonine kinases
+LIMK1	serine/threonine kinases
+PAK2	serine/threonine kinases
+PAK1	serine/threonine kinases
+RHOA	rac
+PAK7	rac
+PAK3	rac
+CDC42	rac
+ROCK1	rac
+SOS2	rac
+SOS1	rac
+LIMK1	rac
+PAK2	rac
+PAK1	rac
+PAK6	rac
+RHOA	dominant negative
+RAC3	dominant negative
+SMAD2	dominant negative
+RAC2	dominant negative
+CDC42	dominant negative
+SMAD3	dominant negative
+SOS2	dominant negative
+SMAD1	dominant negative
+RAC1	dominant negative
+LIMK1	dominant negative
+AKT1	dominant negative
+PAK1	dominant negative
+SMAD2	tgf-beta signaling
+SMAD6	tgf-beta signaling
+SMAD3	tgf-beta signaling
+SMAD1	tgf-beta signaling
+TGFBR2	tgf-beta signaling
+TGFBR1	tgf-beta signaling
+SMURF2	tgf-beta signaling
+PAK2	tgf-beta signaling
+SMURF1	tgf-beta signaling
+SMAD2	type i receptors
+SMAD6	type i receptors
+SMAD3	type i receptors
+SMAD1	type i receptors
+TGFBR2	type i receptors
+TGFBR1	type i receptors
+SMURF1	type i receptors
+BMPR1B	type i receptors
+SMURF1	rho
+LIMK2	rho
+PAK3	rho
+ROCK1	rho
+SOS2	rho
+RAC1	rho
+LIMK1	rho
+AKT1	rho
+PAK2	rho
+PAK1	rho
+RHOA	actin cytoskeleton
+SMURF1	actin cytoskeleton
+RAC3	actin cytoskeleton
+LIMK2	actin cytoskeleton
+RAC2	actin cytoskeleton
+CDC42	actin cytoskeleton
+ROCK1	actin cytoskeleton
+RAC1	actin cytoskeleton
+LIMK1	actin cytoskeleton
+AKT1	actin cytoskeleton
+PAK1	actin cytoskeleton
+RAC2	ras
+CDC42	ras
+SHC1	ras
+GRB2	ras
+SOS2	ras
+RAC1	ras
+SOS1	ras
+AKT1	ras
+SHC3	ras
+PAK1	ras
+CDC42	downstream effector
+ROCK1	downstream effector
+RHOA	downstream effector
+RAC1	downstream effector
+LIMK1	downstream effector
+AKT1	downstream effector
+PAK3	downstream effector
+PAK1	downstream effector
+SMAD6	cascade
+BMPR2	cascade
+SMURF1	cascade
+RAC2	cascade
+CDC42	cascade
+SHC1	cascade
+GRB2	cascade
+RAC1	cascade
+SOS1	cascade
+AKT1	cascade
+PAK1	cascade
+CDC42	motility
+ROCK1	motility
+RAC1	motility
+RHOA	motility
+LIMK1	motility
+SMURF1	motility
+PAK7	motility
+RAC3	motility
+PAK1	motility
+LIMK2	motility
+PAK6	motility
+SMAD2	bone morphogenetic
+SMAD6	bone morphogenetic
+SMAD3	bone morphogenetic
+SMAD1	bone morphogenetic
+SMURF2	bone morphogenetic
+BMPR1A	bone morphogenetic
+TGFBR1	bone morphogenetic
+BMPR2	bone morphogenetic
+SMURF1	bone morphogenetic
+SMAD2	type ii receptors
+SMAD6	type ii receptors
+SMAD3	type ii receptors
+SMAD1	type ii receptors
+TGFBR2	type ii receptors
+TGFBR1	type ii receptors
+BMPR1B	type ii receptors
+SMAD2	tgf-beta superfamily
+SMAD6	tgf-beta superfamily
+SMAD3	tgf-beta superfamily
+SMAD1	tgf-beta superfamily
+BMPR1A	tgf-beta superfamily
+TGFBR1	tgf-beta superfamily
+BMPR1B	tgf-beta superfamily
+CDC42	stress fibers
+ROCK1	stress fibers
+RHOA	stress fibers
+RAC1	stress fibers
+LIMK1	stress fibers
+LIMK2	stress fibers
+PAK1	stress fibers
+CDC42	reorganization
+RAC2	reorganization
+ROCK1	reorganization
+RHOA	reorganization
+RAC1	reorganization
+LIMK1	reorganization
+LIMK2	reorganization
+PAK1	reorganization
+LIMK2	gtpase
+PAK3	gtpase
+RAC2	gtpase
+CDC42	gtpase
+SOS2	gtpase
+SOS1	gtpase
+LIMK1	gtpase
+AKT1	gtpase
+PAK2	gtpase
+PAK1	gtpase
+RHOA	migration
+TGFBR1	migration
+SMURF2	migration
+BMPR2	migration
+SMURF1	migration
+LIMK2	migration
+RAC2	migration
+CDC42	migration
+ROCK1	migration
+RAC1	migration
+LIMK1	migration
+AKT1	migration
+PAK2	migration
+PAK1	migration
+CDC42	rhoa
+RAC2	rhoa
+ROCK1	rhoa
+SOS2	rhoa
+RAC1	rhoa
+SMURF1	rhoa
+PAK1	rhoa
+LIMK2	rhoa
+SMAD6	signal transduction
+BMPR2	signal transduction
+SMAD2	signal transduction
+SHC1	signal transduction
+SMAD3	signal transduction
+GRB2	signal transduction
+SOS2	signal transduction
+RAC1	signal transduction
+SOS1	signal transduction
+AKT1	signal transduction
+SHC3	signal transduction
+SHC2	signal transduction
+CDC42	gtp-bound
+RAC2	gtp-bound
+SOS2	gtp-bound
+RHOA	gtp-bound
+RAC1	gtp-bound
+RAC3	gtp-bound
+PAK1	gtp-bound
+SMAD2	tgf-beta-mediated
+SMAD6	tgf-beta-mediated
+SMAD3	tgf-beta-mediated
+TGFBR2	tgf-beta-mediated
+TGFBR1	tgf-beta-mediated
+RHOA	cell migration
+TGFBR1	cell migration
+SMURF1	cell migration
+LIMK2	cell migration
+CDC42	cell migration
+ROCK1	cell migration
+RAC1	cell migration
+LIMK1	cell migration
+AKT1	cell migration
+PAK1	cell migration
+CDC42	dbl
+RAC2	dbl
+SOS2	dbl
+RHOA	dbl
+SOS1	dbl
+RAC1	dbl
+SMAD2	serine/threonine kinase receptors
+SMAD6	serine/threonine kinase receptors
+SMAD1	serine/threonine kinase receptors
+BMPR1A	serine/threonine kinase receptors
+TGFBR1	serine/threonine kinase receptors
+CDC42	small gtpases
+ROCK1	small gtpases
+SOS2	small gtpases
+LIMK1	small gtpases
+AKT1	small gtpases
+PAK2	small gtpases
+SMURF1	small gtpases
+PAK1	small gtpases
+TGFBR1	kinase activity
+PAK7	kinase activity
+LIMK2	kinase activity
+PAK3	kinase activity
+LIMK1	kinase activity
+AKT1	kinase activity
+AKT3	kinase activity
+PAK2	kinase activity
+PAK1	kinase activity
+PAK6	kinase activity
+CDC42	membrane ruffles
+SOS2	membrane ruffles
+RHOA	membrane ruffles
+SOS1	membrane ruffles
+RAC1	membrane ruffles
+PAK1	membrane ruffles
+CDC42	dominant-negative
+SMAD3	dominant-negative
+SOS2	dominant-negative
+RHOA	dominant-negative
+RAC1	dominant-negative
+AKT1	dominant-negative
+RAC3	dominant-negative
+PAK1	dominant-negative
+SMAD2	tgfbeta signaling
+SMAD6	tgfbeta signaling
+SMAD3	tgfbeta signaling
+TGFBR2	tgfbeta signaling
+TGFBR1	tgfbeta signaling
+RHOA	cellular
+SMURF1	cellular
+RAC3	cellular
+PAK3	cellular
+RAC2	cellular
+CDC42	cellular
+ROCK1	cellular
+RAC1	cellular
+AKT1	cellular
+AKT3	cellular
+PAK2	cellular
+SHC2	cellular
+PAK1	cellular
+PAK6	cellular
+CDC42	focal adhesions
+ROCK1	focal adhesions
+RHOA	focal adhesions
+RAC1	focal adhesions
+LIMK1	focal adhesions
+LIMK2	focal adhesions
+PAK1	focal adhesions
+SMAD6	activation
+RHOA	activation
+BMPR2	activation
+RAC3	activation
+PAK3	activation
+LIMK2	activation
+SMAD2	activation
+SHC1	activation
+CDC20	activation
+RAC2	activation
+CDC42	activation
+SMAD3	activation
+GRB2	activation
+ROCK1	activation
+SMAD1	activation
+SOS2	activation
+SOS1	activation
+RAC1	activation
+LIMK1	activation
+AKT1	activation
+AKT3	activation
+SHC3	activation
+SHC2	activation
+PAK1	activation
+ROCK1	cytoskeletal reorganization
+RHOA	cytoskeletal reorganization
+RAC1	cytoskeletal reorganization
+RAC3	cytoskeletal reorganization
+PAK1	cytoskeletal reorganization
+RHOA	kinase
+TGFBR1	kinase
+BMPR2	kinase
+RAC2	kinase
+CDC42	kinase
+CDC20	kinase
+SHC1	kinase
+GRB2	kinase
+SOS2	kinase
+RAC1	kinase
+SHC3	kinase
+SMAD2	tgf-beta type i
+SMAD6	tgf-beta type i
+SMAD3	tgf-beta type i
+BMPR1A	tgf-beta type i
+TGFBR1	tgf-beta type i
+CDC42	rho gtpases
+RAC2	rho gtpases
+ROCK1	rho gtpases
+SOS2	rho gtpases
+RAC1	rho gtpases
+PAK1	rho gtpases
+RAC2	y-27632
+ROCK1	y-27632
+RHOA	y-27632
+LIMK1	y-27632
+LIMK2	y-27632
+SMAD2	tgf-beta1
+SMAD6	tgf-beta1
+SMAD3	tgf-beta1
+TGFBR2	tgf-beta1
+TGFBR1	tgf-beta1
+SMURF2	tgf-beta1
+CDC42	pak
+SOS2	pak
+RAC1	pak
+LIMK1	pak
+RAC3	pak
+CDC42	pak1
+RAC1	pak1
+LIMK1	pak1
+RAC3	pak1
+LIMK2	pak1
+RHOA	actin cytoskeletal
+RAC1	actin cytoskeletal
+LIMK1	actin cytoskeletal
+RAC3	actin cytoskeletal
+LIMK2	actin cytoskeletal
+CDC42	dynamics
+ROCK1	dynamics
+RAC1	dynamics
+LIMK1	dynamics
+SMURF1	dynamics
+PAK7	dynamics
+LIMK2	dynamics
+PAK1	dynamics
+SMAD2	superfamily
+SMAD6	superfamily
+SMAD3	superfamily
+SMAD1	superfamily
+BMPR1A	superfamily
+TGFBR1	superfamily
+BMPR2	superfamily
+SMURF1	superfamily
+BMPR1B	superfamily
+CDC42	guanine nucleotide exchange factor
+GRB2	guanine nucleotide exchange factor
+RHOA	guanine nucleotide exchange factor
+SOS1	guanine nucleotide exchange factor
+RAC1	guanine nucleotide exchange factor
+PAK1	guanine nucleotide exchange factor
+SMAD6	signaling
+BMPR1A	signaling
+SMURF2	signaling
+SMURF1	signaling
+RAC3	signaling
+SMAD2	signaling
+SMAD3	signaling
+GRB2	signaling
+SOS2	signaling
+SMAD1	signaling
+SOS1	signaling
+AKT3	signaling
+PAK2	signaling
+SHC3	signaling
+SHC2	signaling
+PAK1	signaling
+SMAD2	negative
+SMAD6	negative
+SMAD3	negative
+SMAD1	negative
+SOS2	negative
+SMURF2	negative
+LIMK1	negative
+AKT1	negative
+RAC3	negative
+RAC2	actin
+ROCK1	actin
+SOS2	actin
+RHOA	actin
+LIMK1	actin
+PAK7	actin
+LIMK2	actin
+PAK1	actin
+SHC1	erk
+GRB2	erk
+SOS1	erk
+AKT1	erk
+BMPR2	erk
+SHC3	erk
+PAK1	erk
+SMAD6	interfering
+SMAD3	interfering
+ROCK1	interfering
+SMURF2	interfering
+RAC1	interfering
+AKT3	interfering
+BMPR2	interfering
+PTTG1	cell proliferation
+TGFBR2	cell proliferation
+TGFBR1	cell proliferation
+BMPR2	cell proliferation
+RAC3	cell proliferation
+PAK3	cell proliferation
+SHC1	cell proliferation
+SMAD3	cell proliferation
+AKT1	cell proliferation
+AKT3	cell proliferation
+SMAD6	bmps
+SMAD1	bmps
+BMPR1A	bmps
+BMPR2	bmps
+SMURF1	bmps
+CDC42	cell motil
+ROCK1	cell motil
+RAC1	cell motil
+RHOA	cell motil
+LIMK1	cell motil
+PAK1	cell motil
+CDC42	small g
+RHOA	small g
+RAC1	small g
+PAK2	small g
+PAK1	small g
+SHC1	tyrosine phosphorylation
+GRB2	tyrosine phosphorylation
+SOS2	tyrosine phosphorylation
+SOS1	tyrosine phosphorylation
+RAC1	tyrosine phosphorylation
+AKT1	tyrosine phosphorylation
+SHC2	tyrosine phosphorylation
+SHC3	tyrosine phosphorylation
+SMAD6	receptor
+SMURF2	receptor
+SMURF1	receptor
+SMAD2	receptor
+SHC1	receptor
+SMAD3	receptor
+GRB2	receptor
+SOS2	receptor
+SMAD1	receptor
+RAC1	receptor
+SOS1	receptor
+AKT1	receptor
+SHC3	receptor
+SHC2	receptor
+PTTG1	proliferation
+TGFBR2	proliferation
+BMPR1A	proliferation
+RHOA	proliferation
+TGFBR1	proliferation
+BMPR2	proliferation
+PAK3	proliferation
+SHC1	proliferation
+SMAD3	proliferation
+GRB2	proliferation
+SMAD1	proliferation
+AKT1	proliferation
+AKT3	proliferation
+SHC3	proliferation
+CDC42	lamellipodia
+RHOA	lamellipodia
+RAC1	lamellipodia
+RAC3	lamellipodia
+PAK1	lamellipodia
+SMAD2	tgf-beta1-induced
+SMAD6	tgf-beta1-induced
+SMAD3	tgf-beta1-induced
+TGFBR1	tgf-beta1-induced
+SMAD2	transforming growth factor-beta signaling
+SMAD6	transforming growth factor-beta signaling
+SMAD3	transforming growth factor-beta signaling
+SMURF1	transforming growth factor-beta signaling
+SMAD2	tgf-beta
+SMAD6	tgf-beta
+SMAD1	tgf-beta
+TGFBR1	tgf-beta
+BMPR2	tgf-beta
+PAK2	tgf-beta
+SMAD6	bmp signaling
+SMAD1	bmp signaling
+BMPR1A	bmp signaling
+BMPR2	bmp signaling
+SMURF1	bmp signaling
+CDC42	rac1
+SOS2	rac1
+RHOA	rac1
+AKT1	rac1
+PAK2	rac1
+PAK1	rac1
+SMURF2	stimulation
+SMURF1	stimulation
+RAC3	stimulation
+SMAD2	stimulation
+SMAD3	stimulation
+GRB2	stimulation
+ROCK1	stimulation
+SMAD1	stimulation
+SOS1	stimulation
+AKT3	stimulation
+PAK2	stimulation
+BMPR1B	stimulation
+PAK6	stimulation
+SHC1	adaptor protein
+GRB2	adaptor protein
+SOS2	adaptor protein
+SOS1	adaptor protein
+SHC2	adaptor protein
+SHC3	adaptor protein
+PAK1	adaptor protein
+SMAD2	intracellular signaling
+SMAD6	intracellular signaling
+SMAD3	intracellular signaling
+GRB2	intracellular signaling
+SMAD1	intracellular signaling
+CDC42	neurite
+SOS2	neurite
+RHOA	neurite
+RAC1	neurite
+LIMK1	neurite
+RAC3	neurite
+CDC42	actin fila
+ROCK1	actin fila
+RAC1	actin fila
+RHOA	actin fila
+LIMK1	actin fila
+LIMK2	actin fila
+CDC42	actin polymerization
+RHOA	actin polymerization
+RAC1	actin polymerization
+LIMK1	actin polymerization
+LIMK2	actin polymerization
+SMAD6	suppressed
+SMURF2	suppressed
+BMPR2	suppressed
+MCM10	suppressed
+LIMK2	suppressed
+SMAD2	suppressed
+SMAD3	suppressed
+ROCK1	suppressed
+LIMK1	suppressed
+AKT1	suppressed
+CDC42	jnk
+RAC1	jnk
+AKT1	jnk
+PAK2	jnk
+RAC3	jnk
+PAK1	jnk
+ROCK1	kinase domains
+TGFBR1	kinase domains
+AKT3	kinase domains
+PAK1	kinase domains
+BMPR1B	kinase domains
+PAK6	kinase domains
+SMAD2	tgf-beta-induced
+SMAD6	tgf-beta-induced
+SMAD3	tgf-beta-induced
+TGFBR1	tgf-beta-induced
+SMAD2	tgf-beta receptors
+SMAD6	tgf-beta receptors
+TGFBR1	tgf-beta receptors
+PAK2	tgf-beta receptors
+GRB2	vav
+SOS2	vav
+SOS1	vav
+RAC1	vav
+TGFBR2	smad4
+BMPR1A	smad4
+TGFBR1	smad4
+SMURF2	smad4
+SHC1	phosphotyrosine
+GRB2	phosphotyrosine
+SOS1	phosphotyrosine
+SHC2	phosphotyrosine
+SHC3	phosphotyrosine
+CDC42	family gtpases
+RAC1	family gtpases
+RAC3	family gtpases
+PAK1	family gtpases
+SHC1	receptor tyrosine
+GRB2	receptor tyrosine
+SOS1	receptor tyrosine
+SHC2	receptor tyrosine
+SHC3	receptor tyrosine
+SMAD2	translocation
+RAC2	translocation
+SMAD3	translocation
+SMAD1	translocation
+RHOA	translocation
+RAC1	translocation
+AKT1	translocation
+PAK2	translocation
+SMURF1	translocation
+SHC1	tyrosine kinases
+GRB2	tyrosine kinases
+SOS2	tyrosine kinases
+SOS1	tyrosine kinases
+PAK2	tyrosine kinases
+SHC2	tyrosine kinases
+SHC3	tyrosine kinases
+SHC1	apoptosis
+ROCK1	apoptosis
+AKT3	apoptosis
+AKT1	apoptosis
+BMPR2	apoptosis
+PAK2	apoptosis
+PAK7	apoptosis
+SHC3	apoptosis
+PAK3	apoptosis
+PAK6	apoptosis
+SHC1	ras activation
+GRB2	ras activation
+SOS2	ras activation
+SOS1	ras activation
+GRB2	phosphatidylinositol 3-kinase
+RAC1	phosphatidylinositol 3-kinase
+AKT3	phosphatidylinositol 3-kinase
+AKT1	phosphatidylinositol 3-kinase
+SHC3	phosphatidylinositol 3-kinase
+CDC42	small g proteins
+RAC1	small g proteins
+PAK2	small g proteins
+PAK1	small g proteins
+CDC42	filopodia
+RAC1	filopodia
+PAK7	filopodia
+PAK1	filopodia
+CDC42	guanine nucleotide exchange factors
+RHOA	guanine nucleotide exchange factors
+SOS1	guanine nucleotide exchange factors
+RAC1	guanine nucleotide exchange factors
+SMAD3	collagen
+SMAD1	collagen
+TGFBR2	collagen
+TGFBR1	collagen
+SMURF2	collagen
+SHC3	collagen
+CDC42	f-actin
+RHOA	f-actin
+RAC1	f-actin
+LIMK1	f-actin
+RAC3	f-actin
+SMAD6	transformation
+SMAD3	transformation
+SOS2	transformation
+SOS1	transformation
+AKT3	transformation
+RAC3	transformation
+PAK6	transformation
+SMAD2	mh2 domains
+SMAD6	mh2 domains
+SMAD3	mh2 domains
+SMAD2	activin
+SMAD6	activin
+SMAD3	activin
+SMAD1	activin
+CDC42	cytoskeletal
+ROCK1	cytoskeletal
+RHOA	cytoskeletal
+RAC1	cytoskeletal
+PAK7	cytoskeletal
+PAK1	cytoskeletal
+SMAD6	bmp4
+SMAD1	bmp4
+BMPR1A	bmp4
+BMPR2	bmp4
+SMAD6	bmp-2
+SMAD1	bmp-2
+BMPR1A	bmp-2
+BMPR2	bmp-2
+SMAD1	osteogenic
+BMPR1A	osteogenic
+SMURF1	osteogenic
+BMPR1B	osteogenic
+SHC1	egf receptors
+GRB2	egf receptors
+SOS2	egf receptors
+SOS1	egf receptors
+ROCK1	actin dynamics
+LIMK1	actin dynamics
+RAC3	actin dynamics
+LIMK2	actin dynamics
+SMAD3	tgfbeta1
+TGFBR2	tgfbeta1
+TGFBR1	tgfbeta1
+SMAD6	bmp type i
+SMAD1	bmp type i
+BMPR1A	bmp type i
+CDC42	interactive binding
+PAK2	interactive binding
+PAK6	interactive binding
+SHC1	ras pathway
+GRB2	ras pathway
+SOS1	ras pathway
+SMAD6	transforming growth
+SMAD3	transforming growth
+TGFBR2	transforming growth
+TGFBR1	transforming growth
+CDC42	sh3 domains
+GRB2	sh3 domains
+SOS2	sh3 domains
+SOS1	sh3 domains
+PAK1	sh3 domains
+SMAD2	smad2/3
+SMAD3	smad2/3
+TGFBR1	smad2/3
+SMAD2	tgf-beta-dependent
+SMAD3	tgf-beta-dependent
+TGFBR1	tgf-beta-dependent
+SMAD1	osteoblast differentiation
+BMPR1A	osteoblast differentiation
+SMURF1	osteoblast differentiation
+BMPR1B	osteoblast differentiation
+RAC2	cellular functions
+RHOA	cellular functions
+AKT3	cellular functions
+LIMK2	cellular functions
+TGFBR2	smad
+BMPR1A	smad
+TGFBR1	smad
+BMPR2	smad
+SMAD2	receptor-activated
+SMAD6	receptor-activated
+SMAD3	receptor-activated
+SMAD2	transduce signals
+SMAD6	transduce signals
+SMAD1	transduce signals
+CDC42	gefs
+SOS2	gefs
+RHOA	gefs
+RAC1	gefs
+LIMK2	n-terminal
+RAC2	n-terminal
+CDC42	n-terminal
+GRB2	n-terminal
+SOS2	n-terminal
+RAC1	n-terminal
+SOS1	n-terminal
+LIMK1	n-terminal
+SHC3	n-terminal
+PAK1	n-terminal
+PAK6	n-terminal
+ROCK1	actin reorganization
+RAC1	actin reorganization
+LIMK1	actin reorganization
+SMAD2	growth inhibitory
+TGFBR2	growth inhibitory
+TGFBR1	growth inhibitory
+AKT3	cell survival
+AKT1	cell survival
+PAK2	cell survival
+PAK7	cell survival
+RAC3	cell survival
+SMAD2	transcriptional responses
+SMAD6	transcriptional responses
+SMAD3	transcriptional responses
+CDC42	activated rac1
+SOS2	activated rac1
+RHOA	activated rac1
+SMAD1	bmp-7
+BMPR1A	bmp-7
+BMPR2	bmp-7
+SHC1	ptb domains
+SHC2	ptb domains
+SHC3	ptb domains
+SMAD6	physical interaction
+SMAD3	physical interaction
+SMURF1	physical interaction
+MCM10	physical interaction
+SMAD2	growth inhibition
+SMAD3	growth inhibition
+TGFBR2	growth inhibition
+TGFBR1	growth inhibition
+RAC2	adhesion
+CDC42	adhesion
+RAC1	adhesion
+BMPR2	adhesion
+RAC3	adhesion
+PAK1	adhesion
+CDC42	catalytic domain
+SOS2	catalytic domain
+SOS1	catalytic domain
+PAK2	catalytic domain
+PAK7	catalytic domain
+PAK1	catalytic domain
+SHC1	grb2
+SOS2	grb2
+SOS1	grb2
+SHC3	grb2
+ROCK1	myosin light chain
+RHOA	myosin light chain
+MLC1	myosin light chain
+LIMK1	cofilin
+LIMK2	cofilin
+PAK1	cofilin
+SMAD2	heteromeric complexes
+SMAD3	heteromeric complexes
+TGFBR1	heteromeric complexes
+CDC42	guanosine
+RAC2	guanosine
+RHOA	guanosine
+RAC1	guanosine
+BMPR1A	smad1
+SMURF2	smad1
+BMPR2	smad1
+GRB2	signaling molecules
+SMAD1	signaling molecules
+BMPR1A	signaling molecules
+BMPR2	signaling molecules
+TGFBR2	smad3
+TGFBR1	smad3
+SMURF2	smad3
+SOS2	rac activation
+SOS1	rac activation
+AKT1	rac activation
+TGFBR2	smad2
+TGFBR1	smad2
+SMURF2	smad2
+SHC1	tyrosine-phosphorylated
+GRB2	tyrosine-phosphorylated
+SOS2	tyrosine-phosphorylated
+SHC3	tyrosine-phosphorylated
+CDC20	microtubules
+ROCK1	microtubules
+LIMK1	microtubules
+PAK7	microtubules
+LIMK2	microtubules
+CDC42	formed
+SHC1	formed
+SMAD1	formed
+RHOA	formed
+BMPR1A	formed
+LIMK1	formed
+SMURF1	formed
+PAK7	formed
+RAC3	formed
+BMPR1A	transforming growth factor-beta
+SMURF1	transforming growth factor-beta
+BMPR1B	transforming growth factor-beta
+PTTG1	inhibition
+SMAD6	inhibition
+TGFBR2	inhibition
+TGFBR1	inhibition
+SMURF1	inhibition
+LIMK2	inhibition
+PAK3	inhibition
+SMAD2	inhibition
+CDC20	inhibition
+SHC1	inhibition
+SMAD3	inhibition
+ROCK1	inhibition
+AKT3	inhibition
+SHC1	signal transduction pathways
+GRB2	signal transduction pathways
+AKT1	signal transduction pathways
+BMPR2	signal transduction pathways
+CDC42	protrusions
+RHOA	protrusions
+RAC1	protrusions
+BMPR1A	pten
+AKT3	pten
+AKT1	pten
+SMAD6	protein signaling
+SMAD1	protein signaling
+BMPR1A	protein signaling
+MCM10	amino
+LIMK2	amino
+RAC2	amino
+CDC42	amino
+ROCK1	amino
+SOS2	amino
+SOS1	amino
+PAK2	amino
+SHC3	amino
+PAK1	amino
+ROCK1	dependent
+RAC1	dependent
+AKT1	dependent
+BMPR2	dependent
+MCM10	dependent
+SMAD6	embryonic
+SMAD1	embryonic
+TGFBR2	embryonic
+BMPR1A	embryonic
+TGFBR1	embryonic
+AKT3	embryonic
+MLC1	embryonic
+PAK7	embryonic
+BMPR1B	embryonic
+SHC1	src
+RAC1	src
+AKT1	src
+PAK1	src
+GRB2	sh3
+SOS2	sh3
+SOS1	sh3
+SHC1	irs-1
+GRB2	irs-1
+AKT1	irs-1
+CDC42	constitutively
+RAC2	constitutively
+BMPR1A	constitutively
+AKT1	constitutively
+RAC3	constitutively
+PAK1	constitutively
+ROCK1	cell adhesion
+RHOA	cell adhesion
+RAC1	cell adhesion
+PAK7	cell adhesion
+RAC3	cell adhesion
+CDC42	gtpase-activating
+RAC2	gtpase-activating
+RAC1	gtpase-activating
+TGFBR2	tbetar-ii expression
+TGFBR1	tbetar-ii expression
+LIMK1	putative protein kinase
+LIMK2	putative protein kinase
+SHC1	shcb
+SHC3	shcb
+SMAD2	smad-binding elements
+SMAD3	smad-binding elements
+LIMK1	actin cytoskeleton reorganization
+LIMK2	actin cytoskeleton reorganization
+TGFBR2	tbetarii mrna
+TGFBR1	tbetarii mrna
+LIMK1	cofilin phosphorylation
+LIMK2	cofilin phosphorylation
+SMAD2	transforming growth factor beta signaling
+SMAD3	transforming growth factor beta signaling
+SOS2	ras exchanger
+SOS1	ras exchanger
+PTTG1	anaphase inhibitor
+CDC20	anaphase inhibitor
+SMAD2	p3tp-lux
+SMAD3	p3tp-lux
+SHC2	shca
+SHC3	shca
+TGFBR2	tbetarii expression
+TGFBR1	tbetarii expression
+SMAD3	tgf-beta1 signaling
+TGFBR1	tgf-beta1 signaling
+BMPR1A	bmpr-ib mrnas
+BMPR1B	bmpr-ib mrnas
+SOS2	ras-specific
+SOS1	ras-specific
+LIMK1	toward cofilin
+LIMK2	toward cofilin
+TGFBR2	type ii tgf-beta
+TGFBR1	type ii tgf-beta
+SMAD2	smad-dependent
+SMAD1	smad-dependent
+SHC1	ch1
+SHC3	ch1
+PTTG1	apc/c activator
+CDC20	apc/c activator
+SHC1	shcc
+SHC2	shcc
+LIMK1	regulate actin cytoskeletal
+LIMK2	regulate actin cytoskeletal
+TGFBR2	loeys-dietz
+TGFBR1	loeys-dietz
+SMAD2	tgf-beta signal transduction
+SMAD3	tgf-beta signal transduction
+CDC42	fila
+RAC1	fila
+RHOA	fila
+PAK1	fila
+CDC42	gtp-bound forms
+RAC2	gtp-bound forms
+SOS2	gtp-bound forms
+LIMK2	pulmonary hypertense
+BMPR1A	pulmonary hypertense
+BMPR2	pulmonary hypertense
+SMAD6	fibers
+SMAD3	fibers
+ROCK1	fibers
+SMURF2	fibers
+TGFBR1	fibers
+GRB2	shc
+SOS2	shc
+SOS1	shc
+SMAD6	xenopus embryos
+SMAD1	xenopus embryos
+SMURF1	xenopus embryos
+LIMK1	lim motifs
+LIMK2	lim motifs
+SMAD6	bmp-induced
+SMAD1	bmp-induced
+SMAD2	mh1 domains
+SMAD3	mh1 domains
+ROCK1	rhoa signaling
+RHOA	rhoa signaling
+LIMK1	actin depolymerizing factor
+LIMK2	actin depolymerizing factor
+LIMK1	two lim
+LIMK2	two lim
+SMAD2	inhibiting tgf-beta
+SMAD6	inhibiting tgf-beta
+LIMK1	actin cytoskeletal reorganization
+LIMK2	actin cytoskeletal reorganization
+TGFBR2	t beta
+TGFBR1	t beta
+SMAD2	mediates tgf-beta
+SMAD3	mediates tgf-beta
+SMAD2	tgf-beta type ii
+TGFBR1	tgf-beta type ii
+SMAD2	tgf-beta stimulation
+SMAD3	tgf-beta stimulation
+TGFBR2	marfan syndrome
+TGFBR1	marfan syndrome
+ROCK1	cytoskeletal dynamics
+PAK1	cytoskeletal dynamics
+SMAD2	tgf-beta-induced transcription
+SMAD3	tgf-beta-induced transcription
+SMAD2	tgf-beta induced
+SMAD3	tgf-beta induced
+SMAD1	bmpr-ia
+BMPR1B	bmpr-ia
+BMPR1A	gdf5
+BMPR1B	gdf5
+TGFBR2	mink lung
+TGFBR1	mink lung
+SMAD6	receptor-regulated
+SMAD1	receptor-regulated
+TGFBR2	tgf-beta binding
+TGFBR1	tgf-beta binding
+SOS2	vav2
+RAC1	vav2
+ROCK1	sirna
+LIMK1	sirna
+AKT3	sirna
+LIMK2	sirna
+SHC1	map kinases
+GRB2	map kinases
+SOS1	map kinases
+SHC1	adaptor molecule
+GRB2	adaptor molecule
+SHC3	adaptor molecule
+SHC1	akt
+BMPR2	akt
+SHC3	akt
+RAC3	akt
+GRB2	n-terminal sh3 domain
+SOS2	n-terminal sh3 domain
+SMAD2	tgf-beta responses
+SMAD6	tgf-beta responses
+RAC2	cdc42hs
+RAC1	cdc42hs
+CDC42	gtpases rac
+PAK1	gtpases rac
+SMAD3	smad-mediated
+SMURF2	smad-mediated
+SOS2	proteins grb2
+SOS1	proteins grb2
+PAK7	gtpases cdc42
+PAK1	gtpases cdc42
+TGFBR1	smad signaling
+BMPR2	smad signaling
+PTTG1	pds1
+CDC20	pds1
+CDC42	cdc42/rac
+PAK1	cdc42/rac
+SHC1	phosphotyrosine-binding domains
+SHC3	phosphotyrosine-binding domains
+TGFBR2	tgf-beta isoforms
+TGFBR1	tgf-beta isoforms
+TGFBR2	tgf-beta2
+TGFBR1	tgf-beta2
+SMURF1	bone formation
+SMAD1	bone formation
+BMPR1A	bone formation
+PTTG1	ubiquitin
+CDC20	ubiquitin
+SMURF2	ubiquitin
+SMURF1	ubiquitin
+SHC1	insulin receptors
+GRB2	insulin receptors
+AKT1	insulin receptors
+RAC1	constitutive activation
+AKT1	constitutive activation
+RAC3	constitutive activation
+ROCK1	integrin
+RHOA	integrin
+RAC1	integrin
+PAK1	integrin
+SMAD1	linker region
+SMURF1	linker region
+CDC42	filopodia formation
+PAK7	filopodia formation
+BMPR1A	bmprii
+BMPR1B	bmprii
+SMAD6	hoxc8
+SMAD1	hoxc8
+SHC1	map kinase activation
+GRB2	map kinase activation
+GRB2	autophosphorylation
+PAK2	autophosphorylation
+PAK3	autophosphorylation
+PAK1	autophosphorylation
+CDC42	c3
+ROCK1	c3
+RHOA	c3
+SHC1	tyrosine
+GRB2	tyrosine
+RAC1	tyrosine
+AKT1	tyrosine
+SMAD1	alkaline phosphatase
+BMPR1A	alkaline phosphatase
+BMPR1B	alkaline phosphatase
+RAC2	switch i
+RAC3	switch i
+CDC42	rho-family
+RAC1	rho-family
+RAC1	lamellipodia formation
+RAC3	lamellipodia formation
+PAK2	autoinhibitory domains
+PAK1	autoinhibitory domains
+SMAD1	alk1
+BMPR2	alk1
+ROCK1	y27632
+RHOA	y27632
+GRB2	proline-rich
+SOS2	proline-rich
+SOS1	proline-rich
+SMAD3	differentiation
+SMAD1	differentiation
+TGFBR2	differentiation
+BMPR1A	differentiation
+TGFBR1	differentiation
+BMPR2	differentiation
+SMURF1	differentiation
+SHC3	differentiation
+BMPR1B	differentiation
+LIMK1	cognitive
+MLC1	cognitive
+PAK3	cognitive
+SOS2	activated cdc42
+PAK1	activated cdc42
+LIMK1	adf
+LIMK2	adf
+LIMK1	actin-depolymerizing factor
+LIMK2	actin-depolymerizing factor
+GRB2	gab1
+SOS1	gab1
+GRB2	p21ras
+SOS2	p21ras
+LIMK1	nervous system
+SHC2	nervous system
+SHC3	nervous system
+RAC3	nervous system
+PTTG1	mad2
+CDC20	mad2
+SMAD3	cross-talk
+BMPR2	cross-talk
+SMURF2	hect domains
+SMURF1	hect domains
+TGFBR2	growth factor-beta1
+TGFBR1	growth factor-beta1
+ROCK1	rho kinase
+LIMK1	rho kinase
+SMAD6	bmp receptors
+SMAD1	bmp receptors
+PTTG1	mitotic exit
+CDC20	mitotic exit
+SMAD2	activin signaling
+SMAD3	activin signaling
+LIMK1	adf/cofilin
+LIMK2	adf/cofilin
+ROCK1	rho-kinase
+RHOA	rho-kinase
+ROCK1	c3 exoenzyme
+RHOA	c3 exoenzyme
+SMAD6	tgf-beta family
+SMAD1	tgf-beta family
+SHC1	ras-dependent
+SHC3	ras-dependent
+PTTG1	cyclosome
+CDC20	cyclosome
+SHC1	docking
+GRB2	docking
+SHC3	docking
+SMAD6	signaling cascade
+AKT1	signaling cascade
+BMPR2	signaling cascade
+SMAD2	receptor complexes
+SMAD1	receptor complexes
+TGFBR1	receptor complexes
+GRB2	sh2 domains
+SOS1	sh2 domains
+SHC2	sh2 domains
+AKT1	mapk
+BMPR2	mapk
+SHC3	mapk
+ROCK1	neurite outgrowth
+RAC1	neurite outgrowth
+PAK7	neurite outgrowth
+AKT3	akt/pkb
+AKT1	akt/pkb
+SMAD6	alkaline phosphatase activity
+BMPR1A	alkaline phosphatase activity
+PTTG1	cyclin b1
+CDC20	cyclin b1
+LIMK1	immunofluorescence analysis
+LIMK2	immunofluorescence analysis
+PTTG1	angiogenic
+TGFBR1	angiogenic
+BMPR2	angiogenic
+AKT3	angiogenic
+RAC2	triphosphatase
+RAC1	triphosphatase
+TGFBR1	smad7
+SMURF2	smad7
+PTTG1	spindle assembly checkpoint
+CDC20	spindle assembly checkpoint
+ROCK1	actin stress
+RHOA	actin stress
+PTTG1	sister chromatid separation
+CDC20	sister chromatid separation
+SHC1	phosphotyrosine binding
+SHC3	phosphotyrosine binding
+RAC2	rho gdi
+RAC1	rho gdi
+SMURF2	thereby
+AKT3	thereby
+SMURF1	thereby
+RAC2	nadph oxidase
+RAC1	nadph oxidase
+PTTG1	mitotic regulators
+CDC20	mitotic regulators
+LIMK1	kinase-dead
+PAK1	kinase-dead
+PTTG1	degradation
+CDC20	degradation
+SMURF2	degradation
+BMPR2	degradation
+SMURF1	degradation
+SMAD6	inhibitory effects
+SMAD3	inhibitory effects
+TGFBR2	inhibitory effects
+CDC42	gdp
+RAC2	gdp
+SOS2	gdp
+SOS2	ras proteins
+SOS1	ras proteins
+ROCK1	invasion
+RHOA	invasion
+RAC1	invasion
+LIMK1	invasion
+AKT3	phosphoinositide 3-kinase
+AKT1	phosphoinositide 3-kinase
+PTTG1	mitotic checkpoint
+CDC20	mitotic checkpoint
+LIMK1	regulates actin
+LIMK2	regulates actin
+CDC42	cell shape
+RHOA	cell shape
+SOS2	activated ras
+SOS1	activated ras
+CDC42	cell morphology
+RHOA	cell morphology
+PTTG1	tumor development
+AKT3	tumor development
+ROCK1	fiber form
+RHOA	fiber form
+SMAD3	transforming growth factor
+SMAD1	transforming growth factor
+CDC42	dbl homology
+SOS2	dbl homology
+AKT3	pdk1
+AKT1	pdk1
+BMPR1A	transforming growth factor-beta superfamily
+BMPR1B	transforming growth factor-beta superfamily
+SOS2	gef activity
+SOS1	gef activity
+SMAD3	pai-1
+TGFBR1	pai-1
+SOS2	transforming activity
+SOS1	transforming activity
+GRB2	ras signaling
+SOS1	ras signaling
+SMAD2	nucleus
+SMAD6	nucleus
+SMAD3	nucleus
+SMAD1	nucleus
+SMURF1	nucleus
+MCM10	nucleus
+CDC20	ubiquitin-mediated
+SMURF1	ubiquitin-mediated
+SMURF2	bone morphogenetic proteins
+SMURF1	bone morphogenetic proteins
+SHC1	tyrosine-phosphorylated proteins
+GRB2	tyrosine-phosphorylated proteins
+PTTG1	budding yeast
+CDC20	budding yeast
+MCM10	budding yeast
+RAC1	negative mutant
+RAC3	negative mutant
+SMAD2	tgf
+SMAD6	tgf
+PTTG1	cyclin b
+CDC20	cyclin b
+PTTG1	mitotic cyclins
+CDC20	mitotic cyclins
+CDC20	g1
+MCM10	g1
+PAK3	g1
+SMAD6	endogenous
+SMAD3	endogenous
+SMAD1	endogenous
+LIMK1	endogenous
+RAC3	endogenous
+PTTG1	checkpoint
+MCM10	checkpoint
+PAK3	checkpoint
+SMAD2	transforming growth factor beta
+SMAD6	transforming growth factor beta
+PTTG1	anaphase-promoting complex
+CDC20	anaphase-promoting complex
+PAK2	nck
+PAK1	nck
+RAC1	small gtp-binding
+RAC3	small gtp-binding
+PTTG1	anaphase onset
+CDC20	anaphase onset
+PTTG1	apc/c
+CDC20	apc/c
+PTTG1	proteolytic
+CDC20	proteolytic
+PAK2	proteolytic
+SMURF1	proteolytic
+MCM10	proteolytic
+PTTG1	cdh1
+CDC20	cdh1
+SOS2	cdc25
+SOS1	cdc25
+PTTG1	mitotic progression
+CDC20	mitotic progression
+PTTG1	spindle checkpoint
+CDC20	spindle checkpoint
+PTTG1	meiotic
+CDC20	meiotic
+LIMK2	meiotic
+SHC1	sos
+GRB2	sos
+ROCK1	lysophosphatidic
+RHOA	lysophosphatidic
+SMAD6	cartilage
+BMPR1A	cartilage
+BMPR1B	cartilage
+SMAD2	tumor
+PTTG1	tumor
+TGFBR2	tumor
+TGFBR1	tumor
+AKT3	tumor
+RAC3	tumor
+PAK6	tumor
+GRB2	p85
+AKT1	p85
+SHC1	activated receptor
+SHC3	activated receptor
+RAC2	rap1
+SOS2	rap1
+RHOA	remodeling
+RAC1	remodeling
+BMPR2	remodeling
+LIMK1	key regulator
+LIMK2	key regulator
+SHC1	erk activation
+SOS1	erk activation
+RAC1	integrin-mediated
+RAC3	integrin-mediated
+SMURF2	binding
+SMURF1	binding
+PAK7	binding
+CDC42	binding
+CDC20	binding
+GRB2	binding
+SOS2	binding
+SOS1	binding
+PAK2	binding
+SHC3	binding
+SHC2	binding
+PAK1	binding
+PAK6	binding
+SMAD6	transcriptional corepressor
+SMURF2	transcriptional corepressor
+SMAD1	ectopic
+BMPR1A	ectopic
+SMURF2	ectopic
+SHC1	epidermal growth factor receptor
+SHC3	epidermal growth factor receptor
+RAC3	specifically expressed
+LIMK2	specifically expressed
+SMAD2	nuclear accumulation
+SMAD1	nuclear accumulation
+PAK2	regulatory domains
+PAK1	regulatory domains
+PTTG1	mitosis
+CDC20	mitosis
+LIMK1	mitosis
+LIMK2	mitosis
+RAC2	subfamily
+RAC3	subfamily
+LIMK2	subfamily
+MLC1	myosin
+PAK1	myosin
+PTTG1	cell cycl
+MCM10	cell cycl
+PAK3	cell cycl
+PAK6	cell cycl
+SOS2	ph domains
+SOS1	ph domains
+RAC2	plasma membran
+CDC42	plasma membran
+SOS2	plasma membran
+RAC1	plasma membran
+AKT3	plasma membran
+SMAD2	coactivator
+SMAD3	coactivator
+RAC3	coactivator
+SHC1	serine
+PAK2	serine
+PAK1	serine
+SMURF1	biological functions
+PAK7	biological functions
+PTTG1	sister chromatids
+CDC20	sister chromatids
+RAC2	gap
+RHOA	gap
+BMPR1A	chondrogenesis
+BMPR1B	chondrogenesis
+SHC1	linked
+SMURF1	linked
+MCM10	linked
+PAK6	linked
+SHC3	surprisingly
+RAC3	surprisingly
+RAC2	inactive
+PAK2	inactive
+PAK1	inactive
+SMAD3	wound
+TGFBR2	wound
+RAC2	membran
+CDC42	membran
+RAC1	membran
+SOS1	membran
+RHOA	membran
+PAK1	membran
+PTTG1	kinetochores
+CDC20	kinetochores
+GRB2	3-kinase
+RAC1	3-kinase
+AKT3	downstream targets
+AKT1	downstream targets
+PTTG1	tumorigenicity
+SMAD2	tumorigenicity
+RAC3	tumorigenicity
+RAC2	superoxide
+RAC1	superoxide
+PTTG1	cyclin
+CDC20	cyclin
+BMPR1A	inactivation
+RHOA	inactivation
+LIMK1	inactivation
+LIMK2	inactivation
+PTTG1	chromosome segregation
+CDC20	chromosome segregation
+SHC1	receptor signaling
+PAK2	receptor signaling
+SMAD2	negative regulator
+SMAD6	negative regulator
+SMURF2	negative regulator
+SMURF1	negative regulator
+PTTG1	metastasis
+SMURF2	metastasis
+RHOA	metastasis
+RAC3	metastasis
+RAC1	platelet-derived
+PAK1	platelet-derived
+AKT3	insulin-stimulated
+AKT1	insulin-stimulated
+RAC1	growth cones
+LIMK1	growth cones
+CDC42	cell polarity
+SMURF1	cell polarity
+PTTG1	destruction
+CDC20	destruction
+LIMK1	pdz domains
+LIMK2	pdz domains
+TGFBR1	kinase inhibitor
+AKT1	kinase inhibitor
+AKT1	erk1/2
+BMPR2	erk1/2
+PTTG1	exit
+CDC20	exit
+PTTG1	overexpression
+SMAD6	overexpression
+SMURF2	overexpression
+LIMK1	overexpression
+AKT3	overexpression
+RAC3	overexpression
+PTTG1	anaphase
+CDC20	anaphase
+PAK2	stress
+ROCK1	stress
+LIMK2	stress
+SHC2	adab
+SOS2	adab
+PAK1	adab
+AKT1	caspase-3
+PAK2	caspase-3
+RAC2	phagocytosis
+RAC1	phagocytosis
+BMPR2	1a
+PAK3	1a
+PTTG1	metaphase
+CDC20	metaphase
+GRB2	phosphatidylinositol
+AKT1	phosphatidylinositol
+SHC1	receptor tyrosine kinase
+GRB2	receptor tyrosine kinase
+SHC1	tyrosine residues
+GRB2	tyrosine residues
+SMAD2	transcriptional activity
+SMAD3	transcriptional activity
+SMAD1	transcriptional activity
+SHC1	epidermal growth factor
+SOS2	epidermal growth factor
+RAC3	oncogenesis
+AKT3	oncogenesis
+SMURF2	results indicate
+AKT3	results indicate
+BMPR1A	follicles
+BMPR1B	follicles
+PTTG1	proto-oncogene
+SOS2	proto-oncogene
+RAC3	subcellular localization
+LIMK2	subcellular localization
+SMAD6	abrogated
+PAK3	abrogated
+SMAD2	nuclear translocation
+SMAD1	nuclear translocation
+SHC1	ros
+RAC1	ros
+SMAD6	up-regulated
+SMURF2	up-regulated
+PAK3	up-regulated
+PTTG1	ubiquitin ligases
+CDC20	ubiquitin ligases
+TGFBR2	autocrine
+TGFBR1	autocrine
+SMAD6	homeostasis
+BMPR2	homeostasis
+SMURF1	homeostasis
+ROCK1	small interfering
+SMURF1	small interfering
+SMAD3	extracellular matrix
+TGFBR2	extracellular matrix
+TGFBR1	extracellular matrix
+GRB2	ligand
+SMAD1	ligand
+BMPR1A	ligand
+TGFBR1	ligand
+BMPR2	ligand
+ROCK1	smooth muscle
+RHOA	smooth muscle
+BMPR2	smooth muscle
+PTTG1	spindle
+LIMK2	spindle
+SMAD6	exogenous
+TGFBR2	exogenous
+SHC3	mature
+BMPR1B	mature
+ROCK1	vascular
+TGFBR1	vascular
+BMPR2	vascular
+SMAD3	molecular mechanisms
+BMPR2	molecular mechanisms
+RAC3	cell cycle progression
+PAK3	cell cycle progression
+SMURF2	breast cancers
+AKT3	breast cancers
+RAC3	breast cancers
+SMAD2	transcription factor
+SMAD3	transcription factor
+SMAD1	transcription factor
+SMURF1	transcription factor
+RAC3	transcription factor
+GRB2	insulin
+AKT3	insulin
+AKT1	insulin
+SMAD3	gene transcription
+SMURF2	gene transcription
+MCM10	prop
+LIMK2	prop
+SHC1	mitogenic
+GRB2	mitogenic
+AKT3	implicated
+RAC3	implicated
+SHC3	implicated
+MCM10	implicated
+CDC20	delayed
+MCM10	delayed
+AKT3	ovarian
+BMPR1B	ovarian
+SMAD1	mesenchymal
+BMPR1A	mesenchymal
+AKT1	catalytic subunit
+MCM10	catalytic subunit
+SOS2	localization
+RHOA	localization
+RAC3	localization
+LIMK2	localization
+PAK1	localization
+SMURF1	transgenic mice
+RAC3	transgenic mice
+SMAD6	ectopic expression
+LIMK2	ectopic expression
+AKT3	survival
+PAK7	survival
+SHC3	survival
+SMAD2	transcriptional activation
+SMAD3	transcriptional activation
+SMAD1	transcriptional activation
+SMAD1	mesoderm
+BMPR1A	mesoderm
+LIMK1	brain
+MLC1	brain
+PAK7	brain
+SHC2	brain
+SHC3	brain
+PAK6	brain
+TGFBR2	receptor expression
+TGFBR1	receptor expression
+PTTG1	transition
+CDC20	transition
+CDC42	rearrangement
+LIMK2	rearrangement
+AKT1	abolished
+PAK7	abolished
+SOS2	gtp
+PAK2	gtp
+SMURF2	progression
+RAC3	progression
+RAC2	dissociation
+SOS2	dissociation
+SMAD2	nuclear
+SMAD1	nuclear
+RAC3	nuclear
+MCM10	nuclear
+SMAD3	cooperative
+SMAD1	cooperative
+SMAD6	repression
+SMAD3	repression
+SMURF2	repression
+PAK6	repression
+SMURF2	progressive
+MLC1	progressive
+RAC1	upstream
+PAK1	upstream
+PAK6	upstream
+RAC3	subcellular
+LIMK2	subcellular
+AKT3	stimuli
+BMPR2	stimuli
+SHC3	ubiquitous
+RAC3	ubiquitous
+AKT1	nf-kappab
+RAC3	nf-kappab
+SHC1	mammals
+BMPR1B	mammals
+CDC42	assembly
+RAC2	assembly
+MCM10	assembly
+CDC42	morphogenesis
+PAK3	morphogenesis
+BMPR1A	dominant
+SOS1	dominant
+AKT3	wild-type
+RAC3	wild-type
+PAK3	wild-type
+SMURF2	enhanced
+SMURF1	enhanced
+SHC2	enhanced
+PTTG1	onset
+CDC20	onset
+SHC3	silencing
+MCM10	silencing
+LIMK2	unique
+PAK6	unique
+PAK2	regulation
+MLC1	regulation
+SHC2	regulation
+PAK1	regulation
+LIMK1	dephosphorylation
+LIMK2	dephosphorylation
+RAC2	defects
+BMPR1A	defects
+SOS1	defects
+MCM10	defects
+PAK3	defects
+RAC3	depletion
+MCM10	depletion
+SMAD2	promoter
+SMAD3	promoter
+SMAD1	promoter
+SMURF2	promoter
+SMURF1	promoter
+PAK2	frag
+PAK6	frag
+ROCK1	cardiac
+MLC1	cardiac
+PTTG1	cleaved
+PAK2	cleaved
+SMURF1	cytoplasm
+LIMK2	cytoplasm
+TGFBR2	lung
+BMPR2	lung
+PAK7	disruption
+MCM10	disruption
+SOS1	phenotype
+BMPR1A	phenotype
+RAC3	phenotype
+MCM10	phenotype
+RAC3	impaired
+PAK3	impaired
+LIMK1	colocalized
+RAC3	colocalized
+SMAD2	intracellular
+SMAD6	intracellular
+BMPR2	intracellular
+CDC42	catalytic
+RAC2	catalytic
+SOS2	catalytic
+SOS1	catalytic
+PAK2	catalytic
+PAK1	catalytic
+BMPR1B	hormone
+BMPR2	hormone
+BMPR1A	epithelial
+RAC3	epithelial
+LIMK1	synaptic
+PAK3	synaptic
+SHC1	mitochondria
+PAK7	mitochondria
+SMAD2	transcription
+SMAD6	transcription
+SMAD3	transcription
+SMAD1	transcription
+SMURF2	transcription
+PTTG1	correlated
+ROCK2	correlated
+SMAD6	antagonist
+BMPR2	antagonist
+TGFBR2	cytokines
+BMPR2	cytokines
+ROCK1	stability
+SHC3	stability
+GRB2	cytoplasmic
+SHC3	cytoplasmic
+SHC3	conserved
+MCM10	conserved
+AKT3	indicate
+SHC2	indicate
+SHC3	indicate
+PTTG1	chromosome
+CDC20	chromosome
+AKT3	chromosome
+GRB2	affinity
+SOS1	affinity
+SHC1	mice
+BMPR1A	mice
+AKT3	mice
+BMPR2	mice
+TGFBR2	tissues
+SHC2	tissues
+LIMK2	tissues
+PAK6	tissues
+TGFBR2	secretion
+BMPR2	secretion
+PTTG1	mrna
+TGFBR2	mrna
+TGFBR1	mrna
+BMPR1B	mrna

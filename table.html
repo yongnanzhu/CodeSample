@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    svg {
+        vertical-align: middle;
+        background: rgba(255,255,255, 0.2);
+        box-shadow: inset 0 0 3px 0px #CECECE;
+    }
+
+    .header rect{
+        fill: #0099FF;
+    }
+
+    .header text{
+        fill: white;
+        font: 10px sans-serif;
+        text-anchor: middle;
+    }
+
+    .cell text{
+        fill: black;
+        font: 10px sans-serif;
+        text-anchor: middle;
+    }
+    div#container {
+        height: 500px;
+        width: 650px;
+        border:2px solid #000;
+        overflow: scroll;
+    }
+</style>
+<body>
+<script src="./jqueryLib/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="./jqueryLib/jquery-ui-1.10.4.js" type="text/javascript"></script>
+<script src="d3.min.js"></script>
+<script src="fisheye.js"></script>
+<script>
+$(document).ready(function () {
+    var margin = {top: 20, right: 10, bottom: 30, left: 10},
+            width = 650 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+    var container = d3.select('body').append('div')
+            .attr('id', 'container');
+
+    var svg = container.append('svg')
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var headerGrp = svg.append("g").attr("class", "headerGrp");
+    var rowsGrp = svg.append("g").attr("class", "rowsGrp");
+
+    var previousSort = null;
+    var format = d3.time.format("%a %b %d %Y");
+
+    refreshTable(null);
+
+    function refreshTable(sortOn) {
+        var fieldHeight = 30;
+        var fieldWidth = 90;
+
+        $.ajax({
+            url: "queryData.php",
+            type: "GET",
+            data: {
+                pathwaydbId: 1643685,
+                symbol: 'vif'
+            },
+            dataType: "json",
+            success: function (jsonData) {
+                d3.select("#container")
+                        .attr("height", Math.max((fieldHeight + 1) * jsonData.length + 2 * (margin.top + margin.bottom), height + margin.top + margin.bottom));
+                d3.select("svg")
+                        .attr("height", Math.max((fieldHeight + 1) * jsonData.length + 2 * (margin.top + margin.bottom), height + margin.top + margin.bottom));
+
+                var header = headerGrp.selectAll("g")
+                        .data(d3.keys(jsonData[0]))
+                        .enter().append("g")
+                        .attr("class", "header")
+                        .attr("transform", function (d, i) {
+                            return "translate(" + i * fieldWidth + ",0)";
+                        })
+                        .on("click", function (d) {
+                            return refreshTable(d);
+                        });
+
+                header.append("rect")
+                        .attr("width", fieldWidth - 1)
+                        .attr("height", fieldHeight);
+
+                header.append("text")
+                        .attr("x", fieldWidth / 2)
+                        .attr("y", fieldHeight / 2)
+                        .attr("dy", ".35em")
+                        .text(String);
+
+                var rows = rowsGrp.selectAll("g.row").data(jsonData);
+                // create rows
+                var rowsEnter = rows.enter().append("svg:g")
+                        .attr("class", "row")
+                        .attr("id", function (d, i) {
+                            return "row" + i;
+                        })
+                        .attr("transform", function (d, i) {
+                            return "translate(0," + (i + 1) * (fieldHeight + 1) + ")";
+                        });
+                // select cells
+                var cells = rows.selectAll("g.cell").data(function (d) {
+                    return d3.values(d);
+                });
+                // create cells
+                var cellsEnter = cells.enter().append("svg:g")
+                        .attr("class", "cell")
+                        .attr("id", function (d, i) {
+                            return "column" + i;
+                        })
+                        .attr("transform", function (d, i) {
+                            return "translate(" + i * fieldWidth + ",0)";
+                        });
+                cellsEnter.append("rect")
+                        .attr("width", function (d, i) {
+                            return (fieldWidth - 1);
+                        })
+                        .attr("height", fieldHeight)
+                        .style("stroke", "#ffffff")
+                        .style("fill", "#66FFFF");
+                cellsEnter.append("text")
+                        .attr("x", fieldWidth / 2)
+                        .attr("y", fieldHeight / 2)
+                        .attr("dy", ".35em")
+                        .text(String);
+                if (sortOn !== null) {
+                    if (sortOn != previousSort) {
+                        rows.sort(function (a, b) {
+                            return sort(a[sortOn], b[sortOn]);
+                        });
+                        previousSort = sortOn;
+                    }
+                    else {
+                        rows.sort(function (a, b) {
+                            return sort(b[sortOn], a[sortOn]);
+                        });
+                        previousSort = null;
+                    }
+                    rows.transition()
+                            .duration(500)
+                            .attr("transform", function (d, i) {
+                                return "translate(0," + (i + 1) * (fieldHeight + 1) + ")";
+                            });
+                    //update cells
+                    rows.selectAll("g.cell").select("text").text(String);
+                }
+            },
+            error: function () {
+                console.log("There was an error.\n");
+            }
+        });
+    }
+
+    function sort(a, b) {
+        if (typeof a == "string") {
+            var parseA = format.parse(a);
+            if (parseA) {
+                var timeA = parseA.getTime();
+                var timeB = format.parse(b).getTime();
+                return timeA > timeB ? 1 : timeA == timeB ? 0 : -1;
+            }
+            else
+                return a.localeCompare(b);
+        }
+        else if (typeof a == "number") {
+            return a > b ? 1 : a == b ? 0 : -1;
+        }
+        else if (typeof a == "boolean") {
+            return b ? 1 : a ? -1 : 0;
+        }
+    }
+});
+</script>

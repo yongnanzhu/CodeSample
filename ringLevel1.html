@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    path {
+        stroke: #fff;
+        fill-rule: evenodd;
+    }
+    .node {
+        font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        fill: #bbb;
+    }
+
+    .node:hover {
+        fill: #000;
+    }
+
+    .link {
+        stroke: steelblue;
+        stroke-opacity: .4;
+        fill: none;
+        pointer-events: none;
+    }
+
+    .node:hover,
+    .node--source,
+    .node--target {
+        font-weight: 700;
+    }
+
+    .node--source {
+        fill: #2ca02c;
+    }
+
+    .node--target {
+        fill: #d62728;
+    }
+
+    .link--source,
+    .link--target {
+        stroke-opacity: 1;
+        stroke-width: 2px;
+    }
+
+    .link--source {
+        stroke: #d62728;
+    }
+
+    .link--target {
+        stroke: #2ca02c;
+    }
+</style>
+<body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+    var width = 730,
+            height = 730,
+            radius = Math.min(width, height) / 2;
+
+    var x = d3.scale.linear()
+            .range([0, 2 * Math.PI]);
+
+    var y = d3.scale.sqrt()
+            .range([0, radius]);
+
+    var color = d3.scale.category20c();
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+    var partition = d3.layout.partition()
+            .value(function(d) { return d.size; });
+
+    var arc = d3.svg.arc()
+            .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+            .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+            .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+            .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+    var tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .style("position", "absolute")
+            .style("z-index", "10000")
+            .style("opacity", 0);
+
+    function format_number(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function format_name(d) {
+        var name = d.name;
+        return  '<b>' + name + '</b>';
+    }
+
+    var nodeData ;
+    //edge ----------------------------------------------------------------------------
+    var bundle = d3.layout.bundle();
+    var line = d3.svg.line.radial()
+            .interpolate("bundle")
+            .tension(.85)
+            .radius(function(d) {
+                return d.y;
+            })
+            .angle(function(d) {
+//                return d.x;
+                return d.x/ Math.PI * 180;
+            });
+    var diagonal = d3.svg.diagonal()
+            .projection(function(d) { return [d.x, d.y]; });
+    //------------------------------------------------------------------------------------------
+
+    d3.json("pathwayHierarchy.json", function(error, root) {
+        nodeData = partition.nodes(root);
+        d3.json("crosstalkLinksLevel1.json", function(error, classes) {
+            var g = svg.selectAll("g")
+                    .data(nodeData)
+                    .enter().append("g");
+
+            var bundleGroup = svg.append("g");
+            var link = bundleGroup.append("g").selectAll(".link");
+            var node = bundleGroup.append("g").selectAll(".node");
+            var objects = processLinks(nodeData, classes);
+            var links= objects.imports;
+            var _nodes = objects.nodes;
+
+            link = link
+                    .data(bundle(links))
+                    .enter().append("path")
+                    .each(function (d) {
+                        d.source = d[0];
+                        d.target = d[d.length - 1];
+                    })
+                    .attr("class", "link")
+                    .attr("d", diagonal);
+
+            node = node
+                    .data(_nodes)
+                    .attr("id", function(d,i){
+
+                        return "node" + d.dbId;
+                    })
+                    .enter().append("circle")
+                    .attr("class", "node")
+                    .attr("r", 5)
+                    .attr("cx", function(d) {
+                        return d.x;
+                    })
+                    .attr("cy", function(d) {
+                        return d.y;
+                    })
+                    .style("fill",   "#f00")
+                    .on("mouseover", mouseovered);
+//                    .on("mouseout", mouseouted);
+            var path = g.append("path")
+                    .attr("id", function(d,i){
+                        if(d.dbId == undefined)
+                            return;
+
+                        return "dbId" + d.dbId;
+                    })
+                    .attr("d", arc)
+                    .style("fill", function(d,i) {
+                        if(i==0)
+                            return;
+                        return color((d.children ? d : d.parent).name); } )
+                    .style("cursor", "pointer")
+                    .on("mouseover", function(d,i) {
+                        if(i==0)
+                            return;
+                        tooltip.html(function() {
+                            return format_name(d);
+                        });
+                        if(d.depth ==1)
+                            mouseovered();
+                        return tooltip.transition()
+                                .duration(50)
+                                .style("opacity", 0.9);
+                    })
+                    .on("mousemove", function(d) {
+                        return tooltip
+                                .style("top", (d3.event.pageY-10)+"px")
+                                .style("left", (d3.event.pageX+10)+"px");
+
+                    })
+                    .on("mouseout", function(d){
+                        d3.select(this).attr("opacity",1.0);
+                        tooltip.style("opacity", 0);
+                        if(d.depth ==1)
+                            mouseouted();
+                    });
+            function mouseovered(d) {
+//                node
+//                        .each(function(n) { n.target = n.source = false; });
+
+                link
+                        .classed("link--target", function(l) { if (l.target === d) return l.source.source = true; })
+                        .classed("link--source", function(l) { if (l.source === d) return l.target.target = true; })
+                        .filter(function(l) { return l.target === d || l.source === d; })
+                        .each(function() { this.parentNode.appendChild(this); });
+
+//                node
+//                        .classed("node--target", function(n) { return n.target; })
+//                        .classed("node--source", function(n) { return n.source; });
+            }
+
+            function mouseouted(d) {
+                link
+                        .classed("link--target", false)
+                        .classed("link--source", false);
+
+//                node
+//                        .classed("node--target", false)
+//                        .classed("node--source", false);
+            }
+
+            function processLinks(nodes,classes)
+            {
+                var imports = [];
+                var _nodes = [];
+                for(var i=0; i<nodes.length; ++i)
+                {
+                    if(nodes[i].depth ==1)
+                    {
+                        var dx = nodes[i].x;
+                        var dy= nodes[i].y;
+                        var d_dx = nodes[i].dx;
+                        var d_dy = nodes[i].dy;
+                        var temp = {};
+                        temp.x = Math.sin(
+                                        Math.PI -  (Math.max(0, Math.min(2 * Math.PI, x(dx)))
+                                        + Math.max(0, Math.min(2 * Math.PI, x(dx + d_dx))))/2
+                        )
+                                *Math.max(0, y(dy+d_dy/2));
+                        temp.y = Math.cos(
+                                        Math.PI -  (Math.max(0, Math.min(2 * Math.PI, x(dx)))
+                                        + Math.max(0, Math.min(2 * Math.PI, x(dx + d_dx))))/2
+                        )
+                                *Math.max(0, y(dy+d_dy/2));
+                        temp.name = nodes[i].name;
+                        temp.parent = nodes[i].parent;
+                        temp.depth = nodes[i].depth;
+                        temp.children = nodes[i].children;
+                        _nodes.push(temp);
+                    }
+                }
+                for(var i=0; i<classes.length; ++i)
+                {
+                    var source;
+                    var targets = [];
+                    if(classes[i].imports.length != 0)
+                    {
+                         for(var ii=0; ii<_nodes.length; ++ii)
+                         {
+                             if(classes[i].name == _nodes[ii].name)
+                             {
+                                  source = _nodes[ii];
+                             }
+                             for(var ij=0; ij<classes[i].imports.length; ++ij)
+                             {
+                                 if(classes[i].imports[ij] == _nodes[ii].name)
+                                 {
+                                     targets.push( _nodes[ii] );
+                                 }
+                             }
+                         }
+                    }
+                    for(var ijk=0; ijk<targets.length; ++ijk)
+                    {
+                        var importObj={};
+                        importObj.source = source;
+                        importObj.target = targets[ijk];
+                        imports.push(importObj);
+                    }
+                }
+                return {imports: imports, nodes: _nodes};
+            }
+        });
+
+    });
+
+    d3.select(self.frameElement).style("height", height + "px");
+
+</script>

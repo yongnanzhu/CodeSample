@@ -1,0 +1,7 @@
+[
+    { "id": 3, "name": "Richy", "male": true, "born": "Sun May 05 2013", "amount": 12000},
+    { "id": 1, "name": "Susi", "male": false, "born": "Mon May 13 2013", "amount": 2000},
+    { "id": 2, "name": "Patrick", "male": true, "born": "Thu Jun 06 2013", "amount": 17000},
+    { "id": 4, "name": "Lorenz", "male": true, "born": "Thu May 09 2013", "amount": 15000},
+    { "id": 5, "name": "Christina", "male": false, "born": "Mon Jul 01 2013", "amount": 16000}
+]

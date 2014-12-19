@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+    <script>
+        d3.text("./symbol2Pathway.txt", function (error, symbol2Pathways) {
+            var symbols = [];
+            var pathways = [];
+            var _symbol2Pathways = symbol2Pathways.split("\r\n");
+
+            for(var i=0; i<_symbol2Pathways.length; ++i)
+            {
+                if(_symbol2Pathways[i] =="")
+                    continue;
+                var arrays = _symbol2Pathways[i].split("\t");
+                symbols.push(arrays[0]);
+                pathways.push(arrays[1]);
+            }
+
+            var sData={};
+            sData.keys=[
+                d3.set(symbols.map(
+                        function(d){
+                            return d;
+                        }
+                )).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);}),
+                d3.set(pathways.map(function(d){ return d;})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);})
+            ];
+            //initialize the relationship
+            sData.data = [
+                sData.keys[0].map(
+                        function(d){
+                            return sData.keys[1].map( function(v){ return 0; });
+                        }),
+                sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); })
+            ];
+
+            for(var i=0; i<symbols.length; ++i)
+            {
+                sData.data[0][sData.keys[0].indexOf(symbols[i])][sData.keys[1].indexOf(pathways[i])]=1;      // The relationship from left to right
+                sData.data[1][sData.keys[1].indexOf(pathways[i])][sData.keys[0].indexOf(symbols[i])]=1;     // The relationship from right to left
+            }
+
+
+
+        });
+    </script>
+</body>
+</html>

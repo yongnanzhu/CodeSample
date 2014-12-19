@@ -1,0 +1,682 @@
+[
+    {
+        "dbId": "109581",
+        "name": "Apoptosis",
+        "children": [
+            {
+                "dbId": "109607",
+                "name": "Extrinsic Pathway for Apoptosis"
+            },
+            {
+                "dbId": "109606",
+                "name": "Intrinsic Pathway for Apoptosis"
+            },
+            {
+                "dbId": "75153",
+                "name": "Apoptotic execution  phase"
+            },
+            {
+                "dbId": "169911",
+                "name": "Regulation of Apoptosis"
+            }
+        ]
+    },
+    {
+        "dbId": "2173782",
+        "name": "Binding and Uptake of Ligands by Scavenger Receptors",
+        "children": [
+            {
+                "dbId": "2168880",
+                "name": "Scavenging of Heme from Plasma"
+            }
+        ]
+    },
+    {
+        "dbId": "1640170",
+        "name": "Cell Cycle",
+        "children": [
+            {
+                "dbId": "69620",
+                "name": "Cell Cycle Checkpoints"
+            },
+            {
+                "dbId": "69278",
+                "name": "Cell Cycle Mitotic"
+            },
+            {
+                "dbId": "73886",
+                "name": "Chromosome Maintenance"
+            }
+        ]
+    },
+    {
+        "dbId": "1500931",
+        "name": "Cell-Cell communication",
+        "children": [
+            {
+                "dbId": "446728",
+                "name": "Cell junction organization"
+            },
+            {
+                "dbId": "391160",
+                "name": "Signal regulatory protein (SIRP) family interactions"
+            },
+            {
+                "dbId": "376172",
+                "name": "DSCAM interactions"
+            },
+            {
+                "dbId": "373753",
+                "name": "Nephrin interactions"
+            }
+        ]
+    },
+    {
+        "dbId": "2262752",
+        "name": "Cellular responses to stress",
+        "children": [
+            {
+                "dbId": "2262749",
+                "name": "Cellular response to hypoxia"
+            }
+        ]
+    },
+    {
+        "dbId": "400253",
+        "name": "Circadian Clock",
+        "children": [
+            {
+                "dbId": "1368108",
+                "name": "BMAL1CLOCKNPAS2 Activates Circadian Expression"
+            },
+            {
+                "dbId": "1368071",
+                "name": "Circadian Repression of Expression by REV-ERBA"
+            },
+            {
+                "dbId": "1368082",
+                "name": "RORA Activates Circadian Expression"
+            }
+        ]
+    },
+    {
+        "dbId": "1266738",
+        "name": "Developmental Biology",
+        "children": [
+            {
+                "dbId": "422475",
+                "name": "Axon guidance"
+            },
+            {
+                "dbId": "525793",
+                "name": "Myogenesis"
+            },
+            {
+                "dbId": "186712",
+                "name": "Regulation of beta-cell development"
+            },
+            {
+                "dbId": "1181150",
+                "name": "Signaling by NODAL"
+            },
+            {
+                "dbId": "381340",
+                "name": "Transcriptional Regulation of White Adipocyte Differentiation"
+            }
+        ]
+    },
+    {
+        "dbId": "1643685",
+        "name": "Disease",
+        "children": [
+            {
+                "dbId": "162906",
+                "name": "HIV Infection"
+            },
+            {
+                "dbId": "168254",
+                "name": "Influenza Infection"
+            },
+            {
+                "dbId": "1222352",
+                "name": "Latent infection of Homo sapiens with Mycobacterium tuberculosis"
+            },
+            {
+                "dbId": "1643713",
+                "name": "Signaling by EGFR in Cancer"
+            },
+            {
+                "dbId": "977225",
+                "name": "Amyloids"
+            },
+            {
+                "dbId": "168799",
+                "name": "Botulinum neurotoxicity"
+            },
+            {
+                "dbId": "1226099",
+                "name": "Signaling by FGFR in disease"
+            },
+            {
+                "dbId": "2160456",
+                "name": "Abnormal metabolism in phenylketonuria"
+            },
+            {
+                "dbId": "2206281",
+                "name": "Mucopolysaccharidoses"
+            },
+            {
+                "dbId": "2474795",
+                "name": "Diseases associated with visual transduction"
+            },
+            {
+                "dbId": "2219528",
+                "name": "PI3KAKT Signaling in Cancer"
+            },
+            {
+                "dbId": "2644603",
+                "name": "Signaling by NOTCH1 in Cancer"
+            },
+            {
+                "dbId": "2978092",
+                "name": "Abnormal conversion of 2-oxoglutarate to 2-hydroxyglutarate"
+            }
+        ]
+    },
+    {
+        "dbId": "73894",
+        "name": "DNA Repair",
+        "children": [
+            {
+                "dbId": "73884",
+                "name": "Base Excision Repair"
+            },
+            {
+                "dbId": "73893",
+                "name": "DNA Damage Bypass"
+            },
+            {
+                "dbId": "73942",
+                "name": "DNA Damage Reversal"
+            },
+            {
+                "dbId": "73890",
+                "name": "Double-Strand Break Repair"
+            },
+            {
+                "dbId": "73885",
+                "name": "Nucleotide Excision Repair"
+            },
+            {
+                "dbId": "419524",
+                "name": "Fanconi Anemia pathway"
+            }
+        ]
+    },
+    {
+        "dbId": "69306",
+        "name": "DNA Replication",
+        "children": [
+            {
+                "dbId": "68874",
+                "name": "MG1 Transition"
+            },
+            {
+                "dbId": "69239",
+                "name": "Synthesis of DNA"
+            },
+            {
+                "dbId": "69304",
+                "name": "Regulation of DNA replication"
+            }
+        ]
+    },
+    {
+        "dbId": "1474244",
+        "name": "Extracellular matrix organization",
+        "children": [
+            {
+                "dbId": "1474290",
+                "name": "Collagen formation"
+            },
+            {
+                "dbId": "1566977",
+                "name": "Fibronectin matrix formation"
+            },
+            {
+                "dbId": "1566948",
+                "name": "Elastic fibre formation"
+            },
+            {
+                "dbId": "1474228",
+                "name": "Degradation of the extracellular matrix"
+            }
+        ]
+    },
+    {
+        "dbId": "74160",
+        "name": "Gene Expression",
+        "children": [
+            {
+                "dbId": "212436",
+                "name": "Generic Transcription Pathway"
+            },
+            {
+                "dbId": "504046",
+                "name": "RNA Polymerase I RNA Polymerase III and Mitochondrial Transcription"
+            },
+            {
+                "dbId": "73857",
+                "name": "RNA Polymerase II Transcription"
+            },
+            {
+                "dbId": "72086",
+                "name": "mRNA Capping"
+            },
+            {
+                "dbId": "72203",
+                "name": "Processing of Capped Intron-Containing Pre-mRNA"
+            },
+            {
+                "dbId": "75067",
+                "name": "Processing of Capped Intronless Pre-mRNA"
+            },
+            {
+                "dbId": "75072",
+                "name": "mRNA Editing"
+            },
+            {
+                "dbId": "379724",
+                "name": "tRNA Aminoacylation"
+            },
+            {
+                "dbId": "429914",
+                "name": "Deadenylation-dependent mRNA decay"
+            },
+            {
+                "dbId": "927802",
+                "name": "Nonsense-Mediated Decay"
+            },
+            {
+                "dbId": "211000",
+                "name": "Regulatory RNA pathways"
+            },
+            {
+                "dbId": "450531",
+                "name": "Regulation of mRNA Stability by Proteins that Bind AU-rich Elements"
+            },
+            {
+                "dbId": "72766",
+                "name": "Translation"
+            },
+            {
+                "dbId": "194441",
+                "name": "Metabolism of non-coding RNA"
+            },
+            {
+                "dbId": "428359",
+                "name": "Binding of RNA by Insulin-like Growth Factor-2 mRNA Binding Proteins (IGF2BPsIMPsVICKZs)"
+            }
+        ]
+    },
+    {
+        "dbId": "109582",
+        "name": "Hemostasis",
+        "children": [
+            {
+                "dbId": "418346",
+                "name": "Platelet homeostasis"
+            },
+            {
+                "dbId": "75892",
+                "name": "Platelet Adhesion to exposed collagen"
+            },
+            {
+                "dbId": "76002",
+                "name": "Platelet activation signaling and aggregation"
+            },
+            {
+                "dbId": "140877",
+                "name": "Formation of Fibrin Clot (Clotting Cascade)"
+            },
+            {
+                "dbId": "75205",
+                "name": "Dissolution of Fibrin Clot"
+            },
+            {
+                "dbId": "202733",
+                "name": "Cell surface interactions at the vascular wall"
+            },
+            {
+                "dbId": "983231",
+                "name": "Factors involved in megakaryocyte development and platelet production"
+            }
+        ]
+    },
+    {
+        "dbId": "168256",
+        "name": "Immune System",
+        "children": [
+            {
+                "dbId": "1280218",
+                "name": "Adaptive Immune System"
+            },
+            {
+                "dbId": "168249",
+                "name": "Innate Immune System"
+            },
+            {
+                "dbId": "1280215",
+                "name": "Cytokine Signaling in Immune system"
+            }
+        ]
+    },
+    {
+        "dbId": "1500620",
+        "name": "Meiosis",
+        "children": [
+            {
+                "dbId": "912446",
+                "name": "Meiotic Recombination"
+            },
+            {
+                "dbId": "1221632",
+                "name": "Meiotic Synapsis"
+            }
+        ]
+    },
+    {
+        "dbId": "199991",
+        "name": "Membrane Trafficking",
+        "children": [
+            {
+                "dbId": "199977",
+                "name": "ER to Golgi Transport"
+            },
+            {
+                "dbId": "199983",
+                "name": "Golgi to ER Retrograde Transport"
+            },
+            {
+                "dbId": "199992",
+                "name": "trans-Golgi Network Vesicle Budding"
+            },
+            {
+                "dbId": "157858",
+                "name": "Gap junction trafficking and regulation"
+            },
+            {
+                "dbId": "917729",
+                "name": "Endosomal Sorting Complex Required For Transport (ESCRT)"
+            },
+            {
+                "dbId": "1445148",
+                "name": "Translocation of GLUT4 to the Plasma Membrane"
+            }
+        ]
+    },
+    {
+        "dbId": "1430728",
+        "name": "Metabolism",
+        "children": [
+            {
+                "dbId": "71387",
+                "name": "Metabolism of carbohydrates"
+            },
+            {
+                "dbId": "1483249",
+                "name": "Inositol phosphate metabolism"
+            },
+            {
+                "dbId": "556833",
+                "name": "Metabolism of lipids and lipoproteins"
+            },
+            {
+                "dbId": "163685",
+                "name": "Integration of energy metabolism"
+            },
+            {
+                "dbId": "202131",
+                "name": "Metabolism of nitric oxide"
+            },
+            {
+                "dbId": "1428517",
+                "name": "The citric acid (TCA) cycle and respiratory electron transport"
+            },
+            {
+                "dbId": "15869",
+                "name": "Metabolism of nucleotides"
+            },
+            {
+                "dbId": "196854",
+                "name": "Metabolism of vitamins and cofactors"
+            },
+            {
+                "dbId": "71291",
+                "name": "Metabolism of amino acids and derivatives"
+            },
+            {
+                "dbId": "189445",
+                "name": "Metabolism of porphyrins"
+            },
+            {
+                "dbId": "211859",
+                "name": "Biological oxidations"
+            },
+            {
+                "dbId": "1362409",
+                "name": "Mitochondrial Iron-Sulfur Cluster Biogenesis"
+            },
+            {
+                "dbId": "1480926",
+                "name": "O2CO2 exchange in erythrocytes"
+            },
+            {
+                "dbId": "2161522",
+                "name": "Abacavir transport and metabolism"
+            },
+            {
+                "dbId": "1475029",
+                "name": "Reversible Hydration of Carbon Dioxide"
+            },
+            {
+                "dbId": "2564830",
+                "name": "Cytosolic Iron-sulfur Cluster Assembly"
+            }
+        ]
+    },
+    {
+        "dbId": "392499",
+        "name": "Metabolism of proteins",
+        "children": [
+            {
+                "dbId": "72766",
+                "name": "Translation"
+            },
+            {
+                "dbId": "391251",
+                "name": "Protein folding"
+            },
+            {
+                "dbId": "597592",
+                "name": "Post-translational protein modification"
+            },
+            {
+                "dbId": "1268020",
+                "name": "Mitochondrial Protein Import"
+            },
+            {
+                "dbId": "2980736",
+                "name": "Peptide hormone metabolism"
+            },
+            {
+                "dbId": "381426",
+                "name": "Regulation of Insulin-like Growth Factor (IGF) Transport and Uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs)"
+            },
+            {
+                "dbId": "381119",
+                "name": "Unfolded Protein Response"
+            }
+        ]
+    },
+    {
+        "dbId": "397014",
+        "name": "Muscle contraction",
+        "children": [
+            {
+                "dbId": "390522",
+                "name": "Striated Muscle Contraction"
+            },
+            {
+                "dbId": "445355",
+                "name": "Smooth Muscle Contraction"
+            }
+        ]
+    },
+    {
+        "dbId": "112316",
+        "name": "Neuronal System",
+        "children": [
+            {
+                "dbId": "112307",
+                "name": "Transmission across Electrical Synapses "
+            },
+            {
+                "dbId": "112315",
+                "name": "Transmission across Chemical Synapses"
+            },
+            {
+                "dbId": "1296071",
+                "name": "Potassium Channels"
+            },
+            {
+                "dbId": "168799",
+                "name": "Botulinum neurotoxicity"
+            }
+        ]
+    },
+    {
+        "dbId": "162582",
+        "name": "Signal Transduction",
+        "children": [
+            {
+                "dbId": "177929",
+                "name": "Signaling by EGFR"
+            },
+            {
+                "dbId": "190236",
+                "name": "Signaling by FGFR"
+            },
+            {
+                "dbId": "74752",
+                "name": "Signaling by Insulin receptor"
+            },
+            {
+                "dbId": "166520",
+                "name": "Signalling by NGF"
+            },
+            {
+                "dbId": "186797",
+                "name": "Signaling by PDGF"
+            },
+            {
+                "dbId": "194138",
+                "name": "Signaling by VEGF"
+            },
+            {
+                "dbId": "1433557",
+                "name": "Signaling by SCF-KIT"
+            },
+            {
+                "dbId": "1227986",
+                "name": "Signaling by ERBB2"
+            },
+            {
+                "dbId": "1236394",
+                "name": "Signaling by ERBB4"
+            },
+            {
+                "dbId": "1489509",
+                "name": "DAG and IP3 signaling"
+            },
+            {
+                "dbId": "1257604",
+                "name": "PIP3 activates AKT signaling"
+            },
+            {
+                "dbId": "109869",
+                "name": "RAFMAP kinase cascade"
+            },
+            {
+                "dbId": "194315",
+                "name": "Signaling by Rho GTPases"
+            },
+            {
+                "dbId": "201451",
+                "name": "Signaling by BMP"
+            },
+            {
+                "dbId": "170834",
+                "name": "Signaling by TGF-beta Receptor Complex"
+            },
+            {
+                "dbId": "157118",
+                "name": "Signaling by NOTCH"
+            },
+            {
+                "dbId": "372790",
+                "name": "Signaling by GPCR"
+            },
+            {
+                "dbId": "195721",
+                "name": "Signaling by Wnt"
+            },
+            {
+                "dbId": "2028269",
+                "name": "Signaling by Hippo"
+            },
+            {
+                "dbId": "216083",
+                "name": "Integrin cell surface interactions"
+            },
+            {
+                "dbId": "2404192",
+                "name": "Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R)"
+            },
+            {
+                "dbId": "1502540",
+                "name": "Signaling by Activin"
+            },
+            {
+                "dbId": "2187338",
+                "name": "Visual phototransduction"
+            }
+        ]
+    },
+    {
+        "dbId": "382551",
+        "name": "Transmembrane transport of small molecules",
+        "children": [
+            {
+                "dbId": "382556",
+                "name": "ABC-family proteins mediated transport"
+            },
+            {
+                "dbId": "425407",
+                "name": "SLC-mediated transmembrane transport"
+            },
+            {
+                "dbId": "445717",
+                "name": "Aquaporin-mediated transport"
+            },
+            {
+                "dbId": "917937",
+                "name": "Iron uptake and transport"
+            },
+            {
+                "dbId": "983712",
+                "name": "Ion channel transport"
+            }
+        ]
+    }
+]
