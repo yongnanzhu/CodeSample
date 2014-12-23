@@ -73,7 +73,36 @@
             geneItemData.genes.push(pairs[0]);
             geneItemData.Items.push(pairs[1]);
         }
+
         currentData = partData(geneItemData);        //0 genes   1 items
+//        var saveString="";
+//        for(var i=0; i<currentData.length; ++i)
+//        {
+//            for(var j=0;j<currentData[i].genes.length-1; ++j)
+//            {
+//                if(currentData[i].genes[j] !=="")
+//                {
+//                    saveString += currentData[i].genes[j];
+//                    saveString += "\t";
+//                }
+//            }
+//            saveString += currentData[i].genes[currentData[i].genes.length-1];
+//            saveString += "\n";
+//        }
+//        for(var i=0; i<tempData[1].length; ++i)
+//        {
+//            for(var j=0;j<tempData[1][i].length; ++j)
+//            {
+//                if(tempData[1][i][j] ==1)
+//                {
+//                    saveString += tempKey[0][j];
+//                    saveString += "\t";
+//                    saveString += tempKey[1][i];
+//                    saveString += "\n";
+//                }
+//            }
+//        }
+
         tooltip = d3.select("body")
                 .append("div")
                 .attr("class", "tooltip")
@@ -157,8 +186,6 @@
                 d3.select(this).attr("class","normal");
                 d3.select("#"+d3.select(this).datum().id).property('checked', false);
             }
-
-
         });
 
         function format_name(d) {

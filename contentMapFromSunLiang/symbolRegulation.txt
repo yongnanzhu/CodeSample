@@ -1,0 +1,6 @@
+symbol	regulation
+AVP	Up
+MLC1	Down
+PAK7	Up
+MED6	Down
+NR2E3	Up
