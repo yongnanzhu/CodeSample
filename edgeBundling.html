@@ -48,9 +48,43 @@
 
 </style>
 <body>
+<table class="GG5EBMLCKI" style="position: absolute; left: 6px; top: 6px;">
+    <colgroup>
+        <col>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td id="reset" rowspan="2"><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAARUlEQVR42mNgYGD4Tyy+du0aiGb4TwygngYYH5s4hgaYW9HZWDXg8yxWDVAOsgScjdNJMIUwmihPw0ykbrCSFNMgghQMAIlEf5Ic/Z/LAAAAAElFTkSuQmCC"
+                width="12" height="12" class="gwt-Image" alt="reset" title="reset"></td>
+        <td rowspan="2"><img  id="zoomIn"
+                              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAPUlEQVR42mNgYGD4Tyw+c+YMiGb4TwzAqwGXGJ014PMsVg0gDgzDJGGYKCfBFBLtB5I0EIwHkmIa2XPEYABjqIzoNxHTuAAAAABJRU5ErkJggg=="
+                              width="12" height="12" class="gwt-Image" alt="zoom in" title="zoom in"></td>
+        <td rowspan="2"><img  id="zoomOut"
+                              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAALUlEQVR42mNgYGD4Tyw+c+YMiGb4TwwYChrweRarBhAHFx4KniYppvF5FhsGACZcn28f7AIaAAAAAElFTkSuQmCC"
+                              width="12" height="12" class="gwt-Image" alt="zoom out" title="zoom out"></td>
+        <td rowspan="2"><img id="moveLeft"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAQklEQVR42mNgYGD4Tyw+c+YMiGb4TwygngZcBmDVAHMrURrweRarBigHLoGMcToJpgmmiChPY1NMebCSFNPoHiSEARyJjOip0asqAAAAAElFTkSuQmCC"
+                             width="12" height="12" class="gwt-Image" alt="move left" title="move left"></td>
+        <td><img id="moveUp"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAOUlEQVR42mNgYGD4Tyw+c+YMiGb4TwzAqwEmSZQGdCfg1YDL3UQ7iaANZPmBPhoIxgNJMQ0LDWIxAKWrjOj75HeuAAAAAElFTkSuQmCC"
+                 width="12" height="12" class="gwt-Image" alt="move up" title="move up"></td>
+        <td rowspan="2"><img id="moveRight"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAQElEQVR42mNgYGD4Tyw+c+YMiGb4TwygvgZ0caI0IMthaMDnWawaQBxkjBwyRDsJppgoDciKKQ9WkmIa3bOEMABhH42Buzog1wAAAABJRU5ErkJggg=="
+                             width="12" height="12" class="gwt-Image" alt="move right" title="move right"></td>
+    </tr>
+    <tr>
+        <td><img id="moveDown"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAN0lEQVR42mNgYGD4Tyw+c+YMiGb4TwzAqwEmOQg1IGvCqgFXyOC1AZti6vuBYDyQFNOw0CAWAwDNAozowTErvwAAAABJRU5ErkJggg=="
+                 width="12" height="12" class="gwt-Image" alt="move down" title="move down"></td>
+    </tr>
+    </tbody>
+</table>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-
+    d3.select("table").on("click",function(){
+        alert("click");
+    })
 //    var diameter = 400,
 //            radius = diameter / 2,
 //            innerRadius = radius - 120;

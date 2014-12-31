@@ -1,23 +1,137 @@
+var SORTOUTERFLAG="OuterLength";
+var SORTINNERFLAG="Default";
+var UpExpressed="Up expressed";
+var DownExpressed="Down expressed";
 function loadData(data) {
 
     outer = data.outer;
-    sortOuter(data.outer);
-    function sortOuter(outer){
+    if(SORTOUTERFLAG==="OuterLength")
+    {
+        sortOuterByNameLength(data.outer);
+    }
+    else  if(SORTOUTERFLAG === "OuterFrequency")
+    {
+        sortOuterByNodesFrequency(data.outer);
+    }
+    else  if(SORTOUTERFLAG === "OuterRateLimited")
+    {
+        sortOuterByNodesRateLimited(data.outer);
+    }
+    function compare(a, b) {
+        if (a.name.length > b.name.length)
+            return -1;
+        if (a.name.length < b.name.length)
+            return 1;
+        return 0;
+    }
+    function sortDefault(inner){
+        inner = inner.sort(compare);
+        var inner_even = [];
+        var inner_odd = [];
+        for (var i = 0; i < inner.length; i++) {
+            if (i % 2) {
+                inner_odd.push(inner[i]);
+            } else {
+                inner_even.push(inner[i]);
+            }
+        }
+        inner_odd= inner_odd.reverse();
+        return inner = inner_odd.concat(inner_even);
+    }
+
+    if(SORTINNERFLAG==="Default")
+    {
+        data.inner=sortDefault(data.inner);
+    }
+    else if(SORTINNERFLAG==="InnerLength")
+    {
+        sortInnerByNameLength(data.inner);
+    }
+    else  if(SORTINNERFLAG === "InnerFrequency")
+    {
+        sortInnerByNodesFrequency(data.inner);
+    }
+    else  if(SORTINNERFLAG === "InnerRateLimited")
+    {
+        sortInnerByNodesRateLimited(data.inner);
+    }
+
+    function sortOuterByNameLength(outer) {
         var swapped;
-        do{
-            swapped=false;
-            for(var i=0; i<outer.length-1; ++i)
-            {
-                if(outer[i].name.length>outer[i+1].name.length)
-                {
+        do {
+            swapped = false;
+            for (var i = 0; i < outer.length - 1; ++i) {
+                if (outer[i].name.length > outer[i + 1].name.length) {
                     var tmp = outer[i];
-                    outer[i]=outer[i+1];
-                    outer[i+1]=tmp;
-                    swapped=true;
+                    outer[i] = outer[i + 1];
+                    outer[i + 1] = tmp;
+                    swapped = true;
                 }
             }
-        }while(swapped)
+        } while (swapped)
     }
+    function sortOuterByNodesFrequency(outer) {
+        var swapped;
+        do {
+            swapped = false;
+            for (var i = 0; i < outer.length - 1; ++i) {
+                if (outer[i].related_links.length < outer[i + 1].related_links.length) {
+                    var tmp = outer[i];
+                    outer[i] = outer[i + 1];
+                    outer[i + 1] = tmp;
+                    swapped = true;
+                }
+            }
+        } while (swapped)
+    }
+    function sortOuterByNodesRateLimited(outer) {
+
+        for (var i = 0; i < outer.length; ++i) {
+            if (outer[i].rateLimit !== undefined)
+                if (outer[i].rateLimit) {
+                    outer.splice(0, 0, outer.splice(i, 1)[0]);
+                }
+        }
+    }
+    function sortInnerByNameLength(inner) {
+        var swapped;
+        do {
+            swapped = false;
+            for (var i = 0; i < inner.length - 1; ++i) {
+                if (inner[i].name.length > inner[i + 1].name.length) {
+                    var tmp = inner[i];
+                    inner[i] = inner[i + 1];
+                    inner[i + 1] = tmp;
+                    swapped = true;
+                }
+            }
+        } while (swapped)
+    }
+    function sortInnerByNodesFrequency(inner) {
+        var swapped;
+        do {
+            swapped = false;
+            for (var i = 0; i < inner.length - 1; ++i) {
+                if (inner[i].related_links.length < inner[i + 1].related_links.length) {
+                    var tmp = inner[i];
+                    inner[i] = inner[i + 1];
+                    inner[i + 1] = tmp;
+                    swapped = true;
+                }
+            }
+        } while (swapped)
+    }
+    function sortInnerByNodesRateLimited(inner) {
+
+        for (var i = 0; i < inner.length; ++i) {
+            if (inner[i].rateLimit !== undefined)
+                if (inner[i].rateLimit) {
+                    inner.splice(0, 0, inner.splice(i, 1)[0]);
+                }
+        }
+    }
+
+
     var colors = ["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee090", "#ffffbf", "#e0f3f8", "#abd9e9", "#74add1", "#4575b4", "#313695"];
     var color = d3.scale.linear()
         .domain([60, 220])
@@ -32,9 +146,9 @@ function loadData(data) {
     var il = data.inner.length;
     var ol = data.outer.length;
 
-    var diameter=1400;
+    var diameter = 1400;
     var nodeRingLength = 250;
-    diameter = diameter > il * rect_height ? diameter : (il * rect_height+20);
+    diameter = diameter > il * rect_height ? diameter : (il * rect_height + 40);
 
     var inner_y = d3.scale.linear()
         .domain([0, il])
@@ -42,17 +156,14 @@ function loadData(data) {
 
     var outer_x;
 
-    var levels = Math.ceil(ol/nodeRingLength);
+    var levels = Math.ceil(ol / nodeRingLength);
 
     var maxString;
     var maxLength = 0;
-    var maxStrings =[];
-    for(var j=0; j<levels; ++j)
-    {
-        for(var i=Math.floor(data.outer.length/levels*j); i<data.outer.length/levels*(j+1); ++i)
-        {
-            if(data.outer[i].name.length>maxLength)
-            {
+    var maxStrings = [];
+    for (var j = 0; j < levels; ++j) {
+        for (var i = Math.floor(data.outer.length / levels * j); i < data.outer.length / levels * (j + 1); ++i) {
+            if (data.outer[i].name.length > maxLength) {
                 maxLength = data.outer[i].name.length;
                 maxString = data.outer[i].name;
             }
@@ -61,14 +172,399 @@ function loadData(data) {
         maxStrings.push(maxString);
     }
     var ringSpacings = [0];
-    for(var i=0; i<levels; i++)
-    {
-        var ringSpacing = getStringLength(maxStrings[i])+30;      //40chars 239
+    for (var i = 0; i < levels; i++) {
+        var ringSpacing = getStringLength(maxStrings[i]) + 30;      //40chars 239
         ringSpacings.push(ringSpacing);
     }
 //    var ringSpacing = getStringLength(maxString);      //40chars 239
+    function basicString(string, label) {
+        var tmp = '';
+        tmp += '<div id=' + "legend_" + string + ' class="widget shadow drag" style="position: absolute; left:0px; top:400px; width: 220px; height: 160px;">';
+        tmp += '<div class="dragheader">' + label;
+        tmp += '<span class="close" >X</span>';
+        tmp += '</div>';
+        tmp += '<div id=' + "divBody_" + string + '>';
 
-    function getStringLength(string){
+        tmp += '</div>';
+        tmp += '</div>';
+        return tmp;
+    }
+
+    function basicDivString(string, label) {
+        var tmp = '';
+        tmp += '<div id=' + string + ' class="widget shadow drag" style="position: absolute; left:0px; top:400px; width: 220px; height: 160px;">';
+        tmp += '<div class="dragheader">' + label;
+        tmp += '<span class="close" >X</span>';
+        tmp += '</div>';
+        tmp += '<div id=' + "divBody_" + string + '>';
+
+        tmp += '</div>';
+        tmp += '</div>';
+        return tmp;
+    }
+
+    addInnerLegend();
+
+    addOuterLegend();
+
+    function addExpressionFile(string){
+        if(string==""||string==undefined)
+            return;
+        if($('#legend_expressionFile').length){
+           $('#legend_expressionFile').remove();
+        }
+        var vcdiv = $(basicString("expressionFile", "Expression File Name")).css({
+            top: 10,
+            height: 60
+        });
+
+        $('body').append(vcdiv);
+        $(".drag").draggable();
+
+        var parent = $('#legend_expressionFile');
+        parent.find(".close").click(function () {
+            parent.remove();
+        });
+        $('#legend_expressionFile').css({left: 0,top: 50, height:40});
+        var expressionFileSvg = d3.select('#divBody_expressionFile').append('svg').attr("top", 20).attr("width", 220).attr("height", 40).append("g")
+            .attr("transform", "translate(" + (20) + "," + (20) + ")").append('text').text(string);
+    }
+
+    function addInnerLegend() {
+        if ($('#inner').length) {
+            $('#inner').remove();
+        }
+        var vcdiv = $(basicDivString("inner", "Inner Legend")).css({
+            top: 100
+        });
+
+        $('body').append(vcdiv);
+
+        $(".drag").draggable();
+
+        var parent = $('#inner');
+        parent.find(".close").click(function () {
+            parent.remove();
+        });
+        var innerSvg = d3.select('#divBody_inner').append('svg').attr("left", 0).attr("top", 20).attr("width", 220).attr("height", 160).append('g');
+        innerSvg.append('rect')
+            .attr("x", 10)
+            .attr("y", 10)
+            .attr('width', 10)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#666666";//f46d43
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 10)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#f46d43";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 20)
+            .text("Frequency");
+
+        innerSvg.append('rect')
+            .attr("x", 10)
+            .attr("y", 30)
+            .attr('width', 10)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00f";//
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 30)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#f46d43";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 40)
+            .text("Ratelimit+Frequency");
+
+
+        innerSvg.append('rect')
+            .attr("x", 10)
+            .attr("y", 50)
+            .attr('width', 10)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#666666";//f46d43
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 50)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#ffff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 60)
+            .text(UpExpressed);
+
+        innerSvg.append('rect')
+            .attr("x", 10)
+            .attr("y", 70)
+            .attr('width', 10)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00f";//
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 70)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#ffff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 80)
+            .text("Ratelimit+"+UpExpressed);
+
+
+        innerSvg.append('rect')
+            .attr("x", 10)
+            .attr("y", 90)
+            .attr('width', 10)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#666666";//f46d43
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 90)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00ff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 100)
+            .text(DownExpressed);
+
+        innerSvg.append('rect')
+            .attr("x", 10)
+            .attr("y", 110)
+            .attr('width', 10)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00f";//
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 110)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00ff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 120)
+            .text("Ratelimit+"+DownExpressed);
+    }
+
+    function addOuterLegend() {
+        if ($('#outer').length) {
+            $('#outer').remove();
+        }
+        var vcdiv = $(basicDivString("outer", "Outer Legend"));
+
+        $('body').append(vcdiv);
+
+        $(".drag").draggable();
+
+        var parent = $('#outer').css({
+            top: 300
+        });
+        parent.find(".close").click(function () {
+            parent.remove();
+        });
+        var innerSvg = d3.select('#divBody_outer').append('svg').attr("left", 0).attr("top", 20).attr("width", 220).attr("height", 160).append('g');
+        innerSvg.append('circle')
+            .attr("cx", 10)
+            .attr("cy", 15)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', '1.5px')
+            .attr('pointer-events', 'all')
+            .attr("r", 4.5)
+            .attr("class", 'highlight')
+            .attr("stroke", function (d) {
+                return "#315B7E";
+            })
+            .attr("stroke-width", "2px")
+            .attr('fill', function (d) {
+                return "#ffffff";
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 10)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#f46d43";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 20)
+            .text("Frequency");
+
+        innerSvg.append('circle')
+            .attr("cx", 10)
+            .attr("cy", 35)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', '1.5px')
+            .attr('pointer-events', 'all')
+            .attr("r", 4.5)
+            .attr("class", 'highlight')
+            .attr("stroke", function (d) {
+                return "#315B7E";
+            })
+            .attr("stroke-width", "2px")
+            .attr('fill', function (d) {
+                return "#00f";
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 30)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#f46d43";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 40)
+            .text("Ratelimit+Frequency");
+
+
+        innerSvg.append('circle')
+            .attr("cx", 10)
+            .attr("cy", 55)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', '1.5px')
+            .attr('pointer-events', 'all')
+            .attr("r", 4.5)
+            .attr("class", 'highlight')
+            .attr("stroke", function (d) {
+                return "#315B7E";
+            })
+            .attr("stroke-width", "2px")
+            .attr('fill', function (d) {
+                return "#fff";
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 50)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#ffff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 60)
+            .text(UpExpressed);
+
+        innerSvg.append('circle')
+            .attr("cx", 10)
+            .attr("cy", 75)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', '1.5px')
+            .attr('pointer-events', 'all')
+            .attr("r", 4.5)
+            .attr("class", 'highlight')
+            .attr("stroke", function (d) {
+                return "#315B7E";
+            })
+            .attr("stroke-width", "2px")
+            .attr('fill', function (d) {
+                return "#00f";
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 70)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#ffff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 80)
+            .text("Ratelimit+"+UpExpressed);
+
+
+        innerSvg.append('circle')
+            .attr("cx", 10)
+            .attr("cy", 95)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', '1.5px')
+            .attr('pointer-events', 'all')
+            .attr("r", 4.5)
+            .attr("class", 'highlight')
+            .attr("stroke", function (d) {
+                return "#315B7E";
+            })
+            .attr("stroke-width", "2px")
+            .attr('fill', function (d) {
+                return "#fff";
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 90)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00ff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 100)
+            .text(DownExpressed);
+
+        innerSvg.append('circle')
+            .attr("cx", 10)
+            .attr("cy", 115)
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', '1.5px')
+            .attr('pointer-events', 'all')
+            .attr("r", 4.5)
+            .attr("class", 'highlight')
+            .attr("stroke", function (d) {
+                return "#315B7E";
+            })
+            .attr("stroke-width", "2px")
+            .attr('fill', function (d) {
+                return "#00f";
+            });
+        innerSvg.append('rect')
+            .attr("x", 20)
+            .attr("y", 110)
+            .attr('width', 40)
+            .attr('height', rect_height)
+            .attr('fill', function (d) {
+                return "#00ff00";//
+            });
+        innerSvg.append('text')
+            .attr("x", 70)
+            .attr("y", 120)
+            .text("Ratelimit+"+DownExpressed);
+    }
+
+    function getStringLength(string) {
         d3.select('body').append('svg').attr("id", "tmpSVG").append('text').attr("id", "tmpSVGText").text(string);
         var bbox = d3.select('#tmpSVGText').node().getBBox().width;
         d3.select("#tmpSVG").remove();
@@ -77,14 +573,12 @@ function loadData(data) {
 
     var domains = [];
     var ranges = [];
-    for(var i=0; i<ol; i+=ol/(levels*2) )
-    {
+    for (var i = 0; i < ol; i += ol / (levels * 2)) {
         domains.push(i);
-        domains.push(i+ol/(levels*2));
+        domains.push(i + ol / (levels * 2));
     }
 
-    for(var i=0; i<levels; ++i)
-    {
+    for (var i = 0; i < levels; ++i) {
         ranges.push(10);
         ranges.push(170);
         ranges.push(190);
@@ -96,10 +590,9 @@ function loadData(data) {
 // setup positioning
     data.outer = data.outer.map(function (d, i) {
         d.x = outer_x(i);     // by index
-        var space=0;
-        for(var j=0; j<=Math.floor(i/(ol/levels)); j++)
-        {
-            space+=ringSpacings[Math.floor(j)]
+        var space = 0;
+        for (var j = 0; j <= Math.floor(i / (ol / levels)); j++) {
+            space += ringSpacings[Math.floor(j)]
         }
         d.y = diameter / 4 + space;
 
@@ -133,23 +626,79 @@ function loadData(data) {
         return ((x - 90) / 180 * Math.PI) - (Math.PI / 2);
     }
 
-
-    var width = 2000;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
     var zoom = d3.behavior.zoom()
         .scaleExtent([0.1, 10])
         .on("zoom", zoomed); //Yongnan
     var svg = d3.select("body").append("svg")
         .attr("id", 'svgID')  //to get the svg data!
-        .attr("width", window.innerWidth)
-        .attr("height", window.innerHeight)
+
+        .style("width", width)
+        .style("height", height)
+        .style("left", 0)
+        .style("top", 0)
         .append("g")
-        .attr("transform", "translate(" + (window.innerWidth / 2) + "," + (window.innerHeight / 2) + ")")
+        .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")")
         .call(zoom);  //Yongnan
-    var zoomContainer = svg.append("g");
+    var zoomContainer = svg.append("g").attr("id", "svgZoomContainer");
 
     function zoomed() {
         zoomContainer.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
     }//Yongnan
+    d3.select("#reset").on("click", function () {
+
+        xValue =0;
+        yValue = 0;
+        zoomValue = 1;
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + xValue + "," + yValue + ")scale(" + zoomValue + ")");
+    });
+    d3.select("#moveLeft").on("click", function () {
+        var transformString = d3.transform($("#svgZoomContainer").attr("transform"));
+        xValue = parseFloat(transformString.translate[0]) - 5;
+        yValue = parseFloat(transformString.translate[1]);
+        zoomValue = parseFloat(transformString.scale[0]);
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + (xValue) + "," + (yValue) + ")scale(" + zoomValue + ")");
+//        xValue =0;
+    });
+    d3.select("#moveRight").on("click", function () {
+        var transformString = d3.transform($("#svgZoomContainer").attr("transform"));
+        xValue = parseFloat(transformString.translate[0]) + 5;
+        yValue = parseFloat(transformString.translate[1]);
+        zoomValue = parseFloat(transformString.scale[0]);
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + (xValue) + "," + (yValue) + ")scale(" + zoomValue + ")");
+//        xValue = 0;
+    });
+    d3.select("#moveUp").on("click", function () {
+        var transformString = d3.transform($("#svgZoomContainer").attr("transform"));
+        xValue = parseFloat(transformString.translate[0]);
+        yValue = parseFloat(transformString.translate[1]) - 5;
+        zoomValue = parseFloat(transformString.scale[0]);
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + (xValue) + "," + (yValue) + ")scale(" + zoomValue + ")");
+//        yValue=0;
+    });
+    d3.select("#moveDown").on("click", function () {
+        var transformString = d3.transform($("#svgZoomContainer").attr("transform"));
+        xValue = parseFloat(transformString.translate[0]);
+        yValue = parseFloat(transformString.translate[1]) + 5;
+        zoomValue = parseFloat(transformString.scale[0]);
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + (xValue) + "," + (yValue) + ")scale(" + zoomValue + ")");
+//        yValue=0;
+    });
+    d3.select("#zoomIn").on("click", function () {
+        var transformString = d3.transform($("#svgZoomContainer").attr("transform"));
+        xValue = parseFloat(transformString.translate[0]);
+        yValue = parseFloat(transformString.translate[1]);
+        zoomValue = parseFloat(transformString.scale[0]) + 0.1;
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + xValue + "," + yValue + ")scale(" + zoomValue + ")");
+    });
+    d3.select("#zoomOut").on("click", function () {
+        var transformString = d3.transform($("#svgZoomContainer").attr("transform"));
+        xValue = parseFloat(transformString.translate[0]);
+        yValue = parseFloat(transformString.translate[1]);
+        zoomValue = parseFloat(transformString.scale[0]) - 0.1;
+        d3.select("#svgZoomContainer").attr("transform", "translate(" + xValue + "," + yValue + ")scale(" + zoomValue + ")");
+    });
     // inner nodes
     var maxInnerLinks = d3.max(data.inner, function (d) {
         return d.related_links.length;
@@ -158,22 +707,22 @@ function loadData(data) {
         return d.related_links.length;
     });//Yongnan
 
-//************************* selectedNode*************************
+    //************************* selectedNode*************************
     var selectedObj = {};
     selectedObj.related_nodes = [];
     selectedObj.related_links = [];
 
-//*************************subset data********************
+    //*************************subset data********************
     var subsetObj = {};
     subsetObj.inner = [];
     subsetObj.outer = [];
     subsetObj.links = [];
-//*************************remove array data********************   
+    //*************************remove array data********************
     var removeObj = {};
     removeObj.related_nodes = [];
     removeObj.related_links = [];
 
-//*************************links
+    //*************************links
     var link = zoomContainer.attr('class', 'links').selectAll(".link")
         .data(data.links)
         .enter().append('path')
@@ -189,22 +738,23 @@ function loadData(data) {
         .attr('stroke-width', link_width)
         .on("contextmenu", function (d, i) {
             //create tooltips
-            var position = d3.mouse(this);
+            //---------------------------------------//
             tooltip = get_tooltip(d);
-            d3.event.preventDefault();
-            //console.log((Math.cos((d.x-90)/180*Math.PI)*d.y+diameter/2)+'*'+(Math.sin((d.x-90)/180*Math.PI)*d.y+diameter/2))
+
             tooltip.html(function () {
                 return format_name(d, true);
             });
 
-            $('#' + d.id + '-tprm').click(function () {
-                $('#' + d.id + '-tp').remove();
-            });
-            //console.log('top'+(position[1]+diameter/2)+ ' left:'+(position[0]+diameter/2));
             $('#' + d.id + '-tp').dialog({
                 width: "auto",
                 height: "auto"
             });
+            $('.tooltip').parent().css({
+                left: d3.event.pageX + 10,
+                top: d3.event.pageY - 10
+            });
+            d3.event.preventDefault();
+            //---------------------------------------//
         });
 
 
@@ -219,10 +769,9 @@ function loadData(data) {
         })
         .on("click", nodeclick)
         .on("contextmenu", function (d, i) {
-            //create tooltips
+            //create tooltips                       //----------------------------------------//
             tooltip = get_tooltip(d);
-            d3.event.preventDefault();
-            //console.log((Math.cos((d.x-90)/180*Math.PI)*d.y+diameter/2)+'*'+(Math.sin((d.x-90)/180*Math.PI)*d.y+diameter/2))
+
             tooltip.html(function () {
                 return format_name(d, false);
             });
@@ -241,7 +790,12 @@ function loadData(data) {
                 width: "auto",
                 height: "auto"
             });
-        });
+            $('.tooltip').parent().css({
+                left: d3.event.pageX + 10,
+                top: d3.event.pageY - 10
+            });
+            d3.event.preventDefault();
+        });                                   //----------------------------------------//
 
 
     onode.append("circle")
@@ -289,11 +843,11 @@ function loadData(data) {
             return "outRect" + d.id;
         })
         .attr('fill', function (d) {
-            if(d.regulation==undefined)
+            if (d.regulation == undefined)
                 return "#f46d43";
-            else if(d.regulation=="Up")
+            else if (d.regulation == "Up")
                 return "#ffff00";
-            else if(d.regulation=="Down")
+            else if (d.regulation == "Down")
                 return "#00ff00";
         });
 
@@ -324,9 +878,9 @@ function loadData(data) {
         })
         .on("click", nodeclick)  // add array
         .on("contextmenu", function (d, i) {
-            //create tooltips
+            //create tooltips  //-----------------------------------------------
             tooltip = get_tooltip(d);
-            d3.event.preventDefault();
+
             tooltip.html(function () {
                 return format_name(d, false);
             });
@@ -350,13 +904,19 @@ function loadData(data) {
                     alert('Please give me number!');
                 }
             });
-
+            console.log(d3.event.pageX, d3.event.pageY);
             $('#' + d.id + '-tp').dialog({
-                width: "auto",
-                height: "auto"
+                position: [d3.event.pageX + 10, d3.event.pageY - 10]
             });
-
+            $('.tooltip').parent().css({
+                left: d3.event.pageX + 10,
+                top: d3.event.pageY - 10
+            });
+            d3.event.preventDefault();
+            //-----------------------------------------------
         });
+                    //<line x1="5" y1="5" x2="40" y2="40" stroke="gray" stroke-width="5"  />
+
 
     inode
         .append('rect')
@@ -368,7 +928,7 @@ function loadData(data) {
                 return "#00f";
             }
             else {
-                return "#666666";//f46d43
+                return "#ffffff";//f46d43
             }
         })
         .attr('pointer-events', 'all');
@@ -377,7 +937,7 @@ function loadData(data) {
         .attr('width', function (d) {       //Yongnan
             if (maxInnerLinks == 0)
                 return 0;
-            return Math.floor(rect_width * d.related_links.length / maxInnerLinks)
+            return 20 + Math.floor(rect_width * d.related_links.length / maxInnerLinks)
         })
         .attr('x', 10)
         .attr('height', rect_height)
@@ -386,21 +946,27 @@ function loadData(data) {
         })
         .attr('fill', function (d) {
 //            return "#f46d43"
-            if(d.regulation==undefined)
+            if (d.regulation == undefined)
                 return "#f46d43";
-            else if(d.regulation=="Up")
+            else if (d.regulation == "Up")
                 return "#ffff00";
-            else if(d.regulation=="Down")
+            else if (d.regulation == "Down")
                 return "#00ff00";
         })
         .attr('pointer-events', 'all');
+    inode.append("line")
+        .attr("x1",10).attr("y1",0)
+        .attr("x2",10).attr("y2",rect_height)
+        .attr("stroke","gray")
+        .attr("fill","gray")
+        .attr("stroke-width","2");
 
     inode.append("text")
         .attr('id', function (d) {
             return d.id + '-txt';
         })
         .attr('text-anchor', 'middle')
-        .attr("transform", "translate(" + (rect_width / 2+10) + ", " + rect_height * .75 + ")")
+        .attr("transform", "translate(" + (rect_width / 2 + 10) + ", " + rect_height * .75 + ")")
         .text(function (d) {
             return trimLabel(d.name, 'inner');
         })    //d.name change to two lines or only show the fixed width of string and show all when hover
@@ -446,7 +1012,7 @@ function loadData(data) {
             }
 
             if (subsetObj.inner.length && subsetObj.outer.length) {
-                d3.select("svg").remove();
+                d3.select("#svgID").remove();    //=================================================================================================================================
                 $("#menuID").remove();
                 $(".tooltip").remove();
                 $(".main").remove();  //remove the old gui
@@ -461,17 +1027,24 @@ function loadData(data) {
             }
 
         };
-        this.loadFile=function () {
+        this.loadFile = function () {
             $('#myInput').click();
         };
-        this.load=function () {
+        this.upExpressed = UpExpressed;
+        this.downExpressed = DownExpressed;
+        this.load = function () {
+            if(UpExpressed==""||DownExpressed=="")
+            {
+                alert("Please input the expressed label!");
+                return;
+            }
             var selected_file = $('#myInput').get(0).files[0];
             if (selected_file === undefined /*&& selectValue === null*/) {
                 alert("Please select data file!");
             }
             else if (selected_file !== undefined /*&& selectValue === null*/) {
                 var reader = new FileReader();
-                reader.readAsText(selected_file,"UTF-8");
+                reader.readAsText(selected_file, "UTF-8");
                 reader.onerror = function () {
                 };
                 reader.onprogress = function (event) {
@@ -484,82 +1057,136 @@ function loadData(data) {
                         tempdata = tempdata.replace(/\r\n/g, '\n');
                         tempdata = tempdata.replace(/\r/g, '\n');
                         var symbolRegulation = tempdata.split("\n");
-                        if(symbolRegulation[0].indexOf("regulation")==-1||symbolRegulation.length<2)
-                        {
+                        if (symbolRegulation[0].indexOf("regulation") == -1 || symbolRegulation.length < 2) {
                             alert("Gene expression is a tab-delimited format whose first line begins with symbol and regulation.");
                             return;
                         }
                         var symbolRegulations = {};
-                        symbolRegulations.symbols=[];
-                        symbolRegulations.regulations=[];
-                        for(var i=1; i<symbolRegulation.length; ++i)
-                        {
-                            if(symbolRegulation[i]=="")
+                        symbolRegulations.symbols = [];
+                        symbolRegulations.regulations = [];
+                        for (var i = 1; i < symbolRegulation.length; ++i) {
+                            if (symbolRegulation[i] == "")
                                 continue;
                             var tmps = symbolRegulation[i].split("\t");
                             symbolRegulations.symbols.push(tmps[0]);
                             symbolRegulations.regulations.push(tmps[1]);
                         }
-                        for(var i=0; i<data.inner.length; ++i)
-                        {
-                            var  index = symbolRegulations.symbols.indexOf( data.inner[i].name);
-                            if(index>-1)
-                            {
-                                data.inner[i].regulation=symbolRegulations.regulations[index];
+                        for (var i = 0; i < data.inner.length; ++i) {
+                            var index = symbolRegulations.symbols.indexOf(data.inner[i].name);
+                            if (index > -1) {
+                                data.inner[i].regulation = symbolRegulations.regulations[index];
                             }
                         }
-                        for(var i=0; i<data.outer.length; ++i)
-                        {
-                            var  index = symbolRegulations.symbols.indexOf( data.outer[i].name);
-                            if(index>-1)
-                            {
-                                data.outer[i].regulation=symbolRegulations.regulations[index];
+                        for (var i = 0; i < data.outer.length; ++i) {
+                            var index = symbolRegulations.symbols.indexOf(data.outer[i].name);
+                            if (index > -1) {
+                                data.outer[i].regulation = symbolRegulations.regulations[index];
                             }
                         }
-                        d3.select("svg").remove();
+                        d3.select("#svgID").remove();   //=================================================================================================================================
                         $("#menuID").remove();
                         $(".tooltip").remove();
                         $(".main").remove();
 
+                        addExpressionFile(selected_file.name);
                         loadData(data);
                     }
                 };
             }
         };
-        this.switchNode = function(){
-            var newData =[];
-            for(var i=0; i<data.outer.length; ++i)
-            {
-                var tmpData=[];
+        this.switchNode = function () {
+            var newData = [];
+            for (var i = 0; i < data.outer.length; ++i) {
+                var tmpData = [];
                 tmpData.push(data.outer[i].name);
-                var tmpdata=[];
-                for(var j=0; j<data.outer[i].related_nodes.length; ++j)
-                {
-                    if(getInnerNameById(data.outer[i].related_nodes[j])!==null)
-                    {
+                var tmpdata = [];
+                for (var j = 0; j < data.outer[i].related_nodes.length; ++j) {
+                    if (getInnerNameById(data.outer[i].related_nodes[j]) !== null) {
                         tmpdata.push(getInnerNameById(data.outer[i].related_nodes[j]).name);
                     }
                 }
-                if(tmpdata.length>0)
-                {
+                if (tmpdata.length > 0) {
                     tmpData.push(tmpdata);
                 }
                 newData.push(tmpData);
             }
-            d3.select("svg").remove();
+            d3.select("#svgID").remove();
             $("#menuID").remove();
             $(".tooltip").remove();
             $(".main").remove();
-
+            SymbolInInner=!SymbolInInner;
             renderNodes(newData);
         };
+        this.innerLegend = function () {
+
+            addInnerLegend();
+        };
+        this.outerLegend = function () {
+
+            addOuterLegend();
+        };
+        this.innersmallerLength = "5";
+        this.innergreaterLength = "0";
+        var _this = this;
+        this.innerCutoff = function () {
+            var smallLength = parseInt(_this.innersmallerLength);
+            var greatLength = parseInt(_this.innergreaterLength);
+            var subsetObj = {};
+            subsetObj.inner = [];
+            subsetObj.outer = [];
+            subsetObj.links = [];
+//            for(var i=0; i<data.inner.length; ++i)
+//            {
+//                 if(data.inner[i].related_links.length>=greatLength && data.inner[i].related_links.length<=smallLength)
+//                 {
+//                     subsetObj.inner.push(data.inner[i]);
+//                     for(var j=0; j<data.inner[i].related_links.length; j++)
+//                     {
+//                         if(getInnerNameById(data.inner[i].related_nodes[j])!==null)
+//                         {
+//                             tmpdata.push(getInnerNameById(data.inner[i].related_nodes[j]));
+//                         }
+//                     }
+//                 }
+//            }
+            d3.select("#svgID").remove();
+            $("#menuID").remove();
+            $(".tooltip").remove();
+            $(".main").remove();  //remove the old gui
+            window.gui_flag = true;
+            window._data = data;
+
+//            loadData(newTempData);
+        };
+        this.outersmallerLength = "5";
+        this.outergreaterLength = "0";
+        this.outerCutoff = function () {
+            var smallLength = parseInt(_this.outersmallerLength);
+            var greatLength = parseInt(_this.outergreaterLength);
+            var newTempData = [];
+            for (var i = 0; i < data.outer.length; ++i) {
+                if (data.outer[i].related_links.length >= greatLength && data.outer[i].related_links.length <= smallLength) {
+                    newTempData.push(data.outer[i]);
+                }
+            }
+            d3.select("#svgID").remove();
+            $("#menuID").remove();
+            $(".tooltip").remove();
+            $(".main").remove();  //remove the old gui
+            window.gui_flag = true;
+            window._data = data;
+
+            loadData(newTempData);
+        };
+        this.sortOuterData = SORTOUTERFLAG;
+        this.sortInnerData = SORTINNERFLAG;
         if (window.gui_flag) {
             this.goBack = function () {
                 if (!window.gui_flag) {
                     alert("Already original data, can not go back any more!");
                     return;
                 }
-                d3.select("svg").remove();
+                d3.select("#svgID").remove();   //=================================================================================================================================
                 $(".main").remove();  //remove the old gui
                 loadData(window._data);
                 subsetObj = {};
@@ -573,29 +1200,78 @@ function loadData(data) {
             };
         }
     };
-    function getInnerNameById(id){
-        for(var i=0; i<data.inner.length; ++i)
-        {
-            if(data.inner[i].id ==id)
-            {
+
+    function getInnerNameById(id) {
+        for (var i = 0; i < data.inner.length; ++i) {
+            if (data.inner[i].id == id) {
                 return data.inner[i];
             }
         }
         return null;
     }
+
     var text = new FizzyText();
-    var gui = new dat.GUI();
+    //=================================================================================================================================
+    if ($(".main")) {
+        if ($(".ac")) {
+            $(".ac").appendTo($("body"));
+        }
+        $(".main").remove();  //remove the old gui
+    } //=================================================================================================================================
+    var gui = new dat.GUI({ width: 340 });
     gui.add(text, 'switchNode').name('Switch');
-    gui.add(text, 'loadFile').name('Choose Data File');
-    gui.add(text, 'load').name('Load');
-    gui.add(text, 'saveData').name('Save Data');
-    var f1 = gui.addFolder('Save Image');
+    var legend = gui.addFolder('Legend');
+    legend.add(text, 'innerLegend').name('Show Inner Legend');
+    legend.add(text, 'outerLegend').name('Show Outer Legend');
+    var loadFile = gui.addFolder('Load Expression File');
+    var upExpressedControl = loadFile.add(text, 'upExpressed').name('Up expressed Label');
+    upExpressedControl.onChange(function(value) {
+        UpExpressed=value;
+    });
+    var downExpressedControl = loadFile.add(text, 'downExpressed').name('Down expressed Label');
+    downExpressedControl.onChange(function(value) {
+        DownExpressed=value;
+    });
+    loadFile.add(text, 'loadFile').name('Choose Data File');
+    loadFile.add(text, 'load').name('Load');
+    var sortOuterControl = gui.add(text, 'sortOuterData', [ 'OuterLength', 'OuterFrequency', 'OuterRateLimited' ] ).name('sortOuterData').listen();
+    var sortInnerControl = gui.add(text, 'sortInnerData', [ 'Default','InnerLength', 'InnerFrequency', 'InnerRateLimited' ] ).name('sortInnerData').listen();
+    sortOuterControl.onChange(function(value) {
+        SORTOUTERFLAG=value;
+        d3.select("#svgID").remove();   //=================================================================================================================================
+        $("#menuID").remove();
+        $(".tooltip").remove();
+        $(".main").remove();
+        loadData(data);
+    });
+    sortInnerControl.onChange(function(value) {
+        SORTINNERFLAG=value;
+        d3.select("#svgID").remove();   //=================================================================================================================================
+        $("#menuID").remove();
+        $(".tooltip").remove();
+        $(".main").remove();
+        loadData(data);
+    });
+    var Save = gui.addFolder('Save');
+    Save.add(text, 'saveData').name('Save Data');
+    var f1 = Save.addFolder('Save Image');
     f1.add(text, 'svg').name('Save as SVG');
     f1.add(text, 'svgToPNG').name('SVG to PNG');
     gui.add(text, 'subset').name('Subset Data');
     if (window.gui_flag) {
         gui.add(text, 'goBack').name('Previous Graph');
     }
+
+    var cutoffLength = gui.addFolder('Cutoff Length');
+    var innercutoffLength = cutoffLength.addFolder('Inner Cutoff Length');
+    innercutoffLength.add(text, 'innersmallerLength').name("Cutoff length <");
+    innercutoffLength.add(text, 'innergreaterLength').name("Cutoff length >");
+    innercutoffLength.add(text, 'innerCutoff').name('Cut Off');
+
+    var outercutoffLength = cutoffLength.addFolder('Outer Cutoff Length');
+    outercutoffLength.add(text, 'outersmallerLength').name("Cutoff length <");
+    outercutoffLength.add(text, 'outergreaterLength').name("Cutoff length >");
+    outercutoffLength.add(text, 'outerCutoff').name('Cut Off');
 //remove highlighted nodes and edges
 //document.body.addEventListener("click", function() {
     $("#svgID")[0].addEventListener("click", function () {
@@ -623,23 +1299,18 @@ function loadData(data) {
 
 
 ////*************************small functions*************************
-    function get_tooltip(d) {
+    function get_tooltip(d) {       //-----------------------------------------
+        if (d3.select(".tooltip")) {
+            if ($('.tooltip').parent())
+                $('.tooltip').parent().remove();
+            $('.tooltip').remove();
+        }
         if (d) {
             var tooltip = d3.select("body")
                 .append("div")
                 .attr("class", "tooltip")
                 .attr("id", d.id + '-tp')
                 .attr("title", "Tool")
-                //.style("width","150px")
-                //.style("height","200px")
-//	    .style("overflow","scroll")
-//            .style("border-radius", "6px")
-//	    .style("background-color","#fff")
-//	    .style("font-family","arial, helvetica, sans-serif")
-//	    .style("padding-top","5px")
-//	    .style("padding-left","5px")
-//	    //.style("opacity",0.9)
-//            .style("position", "absolute")
                 .style("z-index", "200");
         }
         else {
@@ -648,19 +1319,9 @@ function loadData(data) {
                 .attr("class", "tooltip")
                 .attr("id", 'img-tp')
                 .attr("title", "Tool")
-//	    .style("width","150px")
-//	    .style("height","200px")
-//	    .style("overflow","scroll")
-//            .style("border-radius", "6px")
-//	    .style("background-color","#fff")
-//	    .style("font-family","arial, helvetica, sans-serif")
-//	    .style("padding-top","5px")
-//	    .style("padding-left","5px")
-//	    .style("opacity",0.9)
-//            .style("position", "absolute")
                 .style("z-index", "200");
         }
-
+        //-----------------------------------------
 
         return tooltip;
     }
@@ -784,9 +1445,9 @@ function loadData(data) {
             }
 
             if (flag_node_type) {// inner node clicked, related nodes are outer nodes
-                console.log('want to check!');
-                console.log(d);
-                console.log('end!');
+//                console.log('want to check!');
+//                console.log(d);
+//                console.log('end!');
                 for (var i = 0; i < d.related_nodes.length; i++) {  // subset related nodes
                     for (var j = 0; j < data.outer.length; j++) {
                         if (data.outer[j].id == d.related_nodes[i]) {
@@ -796,18 +1457,10 @@ function loadData(data) {
                             } else {
                                 subsetObj.outer.push(data.outer[j]);
                             }
-
-                            //console.log('outer node---new method');
                         }
                     }
-                    //console.log('outer node---new method');
-                    //console.log(d3.select('#'+d.related_nodes[i]).datum());    //don't know why it's not working
-                    //subsetObj.outer.push(d3.select('#'+d.related_nodes[i]).datum());
-                    //add nodes
 
                     selectedObj.related_nodes.push(d.related_nodes[i]);
-
-                    //d3.select('#' + d.related_nodes[i]).datum().flag;
 
                     d3.select('#' + d.related_nodes[i]).classed('highlight', true);
                     d3.select('#' + d.related_nodes[i] + '-txt').attr("font-weight", 'bold');
@@ -830,20 +1483,9 @@ function loadData(data) {
                     }
                     //add nodes
                     selectedObj.related_nodes.push(d.related_nodes[i]);
-                    //console.log("duplicated inner node?");
-                    //console.log(selectedObj.related_nodes);
                     d3.select('#' + d.related_nodes[i]).classed('highlight', true);
                     d3.select('#' + d.related_nodes[i] + '-txt').attr("font-weight", 'bold');
-                    //if (d3.select('#' + d.related_nodes[i]).attr("clickFlag") == undefined){
-                    //    d3.select('#' + d.related_nodes[i]).attr("clickFlag",1);
-                    //}
-                    //else{
-                    //    d3.select('#' + d.related_nodes[i]).attr("clickFlag",(parseFloat(d3.select('#' + d.related_nodes[i]).attr("clickFlag"))+1));
-                    //}
-
                 }
-
-
             }
 
             //console.log(d);
@@ -854,7 +1496,7 @@ function loadData(data) {
                     }
                 }
                 selectedObj.related_links.push(d.related_links[i]);
-                d3.select('#' + d.related_links[i]).attr('stroke-width', '5px');
+                d3.select('#' + d.related_links[i]).attr('stroke-width', '2px');
                 d3.select('#' + d.related_links[i]).attr('stroke', 'red');  // add the red color (modified by myself)
             }
         }
@@ -869,8 +1511,6 @@ function loadData(data) {
         //console.log('selectedNode');
         //console.log(d);
         for (var i = 0; i < d.related_nodes.length; i++) {
-            //console.log('relatedNodes:'+d.related_nodes[i]);
-            //console.log('relatedNodes:'+d3.select('#' + d.related_nodes[i]).);
 
             d3.select('#' + d.related_nodes[i]).classed('highlight', false);
 
@@ -887,22 +1527,21 @@ function loadData(data) {
         d = {};
     }
 
-// tooltip function
     function format_name(d, edge) {
         //console.log(name)
         if (edge) {
             //console.log(d);
-            var menu_pop = '<div>Gene: ' + d.inner.name + '</div>'
-                + '<div> symbol: ' + d.outer.name + '</div>'
-                + '<div>Link To : <a href="http://www.ncbi.nlm.nih.gov/gquery/?term=' + d.inner.name + '+' + d.outer.name + '" target = "_blank"><button>NCBI</button></a></div>'
-                + '<div>Link To : <a href="http://biotm.cis.udel.edu/udelafc/getSentencePage.php?user=liang&pass=SentencesForLiang&redirect=yes&gene=' + d.inner.name + '&term=' + d.outer.name.toLowerCase() + '" target = "_blank"><button>eGIFT</button></a></div>';
+            var menu_pop = '<div style="top:0;">Gene: ' + d.inner.name + '</div>'
+                + '<div style="margin-top:3px"> symbol: ' + d.outer.name + '</div>'
+                + '<div style="margin-top:5px">Link To : <a href="http://www.ncbi.nlm.nih.gov/gquery/?term=' + d.inner.name + '+' + d.outer.name + '" target = "_blank"><button>NCBI</button></a></div>'
+                + '<div style="margin-top:5px">Link To : <a href="http://biotm.cis.udel.edu/udelafc/getSentencePage.php?user=liang&pass=SentencesForLiang&redirect=yes&gene=' + d.inner.name + '&term=' + d.outer.name.toLowerCase() + '" target = "_blank"><button>eGIFT</button></a></div>';
         }
         else {
             var name = d.name;
-            var menu_pop = '<div> Title: ' + name + '</div>'
-                + '<div>Link To : <a href="http://www.ncbi.nlm.nih.gov/gquery/?term=' + name + '" target = "_blank"><button>NCBI</button></a></div>'
-                + '<div>Node : <button id=' + d.id + '_rm>Remove</button></div>'
-                + '<div>Label Size: <input type="text" id=' + d.id + '_ls size="2"><lable> characters </lable><button id=' + d.id + '_rz>Resize</button></div>';
+            var menu_pop = '<div style="top:0"> Title: ' + name + '</div>'
+                + '<div style="margin-top:3px">Link To : <a href="http://www.ncbi.nlm.nih.gov/gquery/?term=' + name + '" target = "_blank"><button>NCBI</button></a></div>'
+                + '<div style="margin-top:5px">Node : <button id=' + d.id + '_rm>Remove</button></div>'
+                + '<div style="margin-top:5px">Label Size: <input type="text" id=' + d.id + '_ls size="2"><lable> characters </lable><button id=' + d.id + '_rz>Resize</button></div>';
 
         }
         //remove selected nodes and related edges
@@ -943,11 +1582,10 @@ function loadData(data) {
             }
         }
 
-        d3.select("svg").remove();  //remove svg
-        //$("#menuID").remove();  //remove div menu
+        d3.select("#svgID").remove();  //remove svg
+        // =================================================================================================================================
         $(".main").remove();  //remove the old gui
         loadData(data);
-        //tooltip.remove();
     }
 
     function trimLabel(label, type) {
